@@ -4,7 +4,7 @@
 
 #include "Agent.h"
 
-Agent::Agent(){}; //test
+Agent::Agent(){};
 
 virtual void act(Session& session)=0;
 
