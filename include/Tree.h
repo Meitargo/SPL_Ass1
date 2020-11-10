@@ -8,8 +8,11 @@ class Session;
 class Tree{
 public:
     Tree(int rootLabel);
-    void addChild(const Tree& child);
+    ~Tree(); //destructor
+    Tree(const Tree &other); //copy constructor
 
+    void addChild(const Tree& child);
+    const Tree& getChild(int) const;
 
     static Tree* createTree(const Session& session, int rootLabel);
     virtual int traceTree()=0;
