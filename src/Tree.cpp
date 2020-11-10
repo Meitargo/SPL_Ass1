@@ -8,7 +8,10 @@ Tree::Tree(int rootLabel): node(rootLabel), children(){};
 
 Tree::~Tree() {
     //destructor
-    if(node) delete &node;
+    for(auto& children:children)
+    {
+       delete children;
+    }
 }
 
 Tree::Tree(const Tree &other) {
@@ -33,7 +36,7 @@ void Tree::clone() const {
 }
 
 void Tree::addChild(const Tree &child) {
-    children.push_back(child);
+    children.push_back(&child);
 }
 
 
