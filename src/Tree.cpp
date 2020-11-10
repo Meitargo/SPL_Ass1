@@ -7,10 +7,29 @@
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
 
 Tree::~Tree() {
+    //destructor
     if(node) delete &node;
 }
 
 Tree::Tree(const Tree &other) {
+
+}
+
+int Tree::getNode() {
+    return node;
+}
+
+void Tree::clone() const {
+  if (node == nullptr)
+  {
+      return nullptr;
+  }
+  else
+  {
+      Tree *node = new Tree(getNode());
+
+  }
+
 
 }
 
