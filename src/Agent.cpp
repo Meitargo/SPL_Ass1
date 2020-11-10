@@ -23,6 +23,10 @@ void ContactTracer::act(Session &session) {
     }
 }
 
+Agent * ContactTracer::clone() const {
+    return new ContactTracer(*this);
+}
+
 
 //visrus
 //constractor
@@ -32,6 +36,7 @@ Virus::Virus(int nodeInd): nodeInd(nodeInd) {};
 void Virus::act(int &session) {
 
 
-
-
+}
+Agent* Virus::clone() const {
+    return new Virus(*this);
 }

@@ -14,6 +14,7 @@
 using json = nlohmann::json;
 using namespace std;
 
+// initialize
 Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(){
     ifstream i(path);
     json j;
@@ -37,8 +38,13 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 
 };
 
-const queue<int> &Session::getInfectedNodes() const {
-    return infectedNodes;
+//methods
+void Session::addAgent(const Agent &agent) {
+    agents.push_back(agent);
+}
+
+void Session::enqueueInfected(int nodeInd) {
+    infectedNodes.push(nodeInd);
 }
 
 int Session::dequeueInfected() {
@@ -47,12 +53,15 @@ int Session::dequeueInfected() {
     return first;
 }
 
-void Session::enqueueInfected(int nodeInd) {
-    infectedNodes.push(nodeInd);
-}
 
 TreeType Session::getTreeType() const {
     return treeType;
 }
+
+//methods we added
+const queue<int> &Session::getInfectedNodes() const {
+    return infectedNodes;
+}
+
 
 
