@@ -23,8 +23,15 @@ Session::Session(const std::string &path) {
 
     for(auto& agent:j["agents"])
     {
-        //auto *temp = &agent;
-        agents.push_back(agent);
+            Agent *agentTemp;
+
+            if(agent[0]=="C")
+                agentTemp = new ContactTracer();
+            else
+                agentTemp = new Virus((int) agent[1]);
+
+            agents.push_back(agentTemp);
+
     }
 
 };
