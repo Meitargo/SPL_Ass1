@@ -5,7 +5,9 @@
 #include <string>
 #include <queue>
 #include "Graph.h"
+#include "Tree.h"
 
+using namespace std;//checkIfNeeded
 class Agent;
 
 enum TreeType{
@@ -26,6 +28,12 @@ public:
     void enqueueInfected(int);
     int dequeueInfected();
     TreeType getTreeType() const;
+
+
+
+    //methods we add
+    const queue<int> &getInfectedNodes() const;
+//checkIfNeed
 
 private:
     Graph g;

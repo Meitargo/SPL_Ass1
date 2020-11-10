@@ -14,7 +14,15 @@ Agent::Agent() {};
 ContactTracer::ContactTracer() {};
 
 //methods
-if(Session.
+void ContactTracer::act(Session &session) {
+    if (!session.getInfectedNodes().empty()){
+       session.dequeueInfected();
+       //l1: we should build max rank tree
+       //l2: we should delete the graph edges of the return l2
+       // add to agents list
+
+    }
+}
 
 
 //visrus
