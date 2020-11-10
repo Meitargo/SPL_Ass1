@@ -20,7 +20,6 @@ void ContactTracer::act(Session &session) {
        //l1: we should build max rank tree
        //l2: we should delete the graph edges of the return l2
        // add to agents list
-
     }
 }
 

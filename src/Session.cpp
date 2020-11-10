@@ -45,6 +45,14 @@ int Session::dequeueInfected() {
     int first = infectedNodes.front();
     infectedNodes.pop();
     return first;
-
 }
+
+void Session::enqueueInfected(int nodeInd) {
+    infectedNodes.push(nodeInd);
+}
+
+TreeType Session::getTreeType() const {
+    return treeType;
+}
+
 
