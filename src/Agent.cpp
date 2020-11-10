@@ -3,16 +3,28 @@
 //
 
 #include "Agent.h"
-
-Agent::Agent(){};
-
-virtual void act(Session& session)=0;
-
-ContactTracer::ContactTracer(){};
-
-virtual void act(Session& session);
-
-Virus(int nodeInt):nodeInt(nodeInt){}
+#include "Session.h"
 
 
-virtual void act(Session& session);
+
+Agent::Agent() {};
+
+
+//contact tracer
+ContactTracer::ContactTracer() {};
+
+//methods
+if(Session.
+
+
+//visrus
+//constractor
+Virus::Virus(int nodeInd): nodeInd(nodeInd) {};
+
+//mwthods
+void Virus::act(int &session) {
+
+
+
+
+}

@@ -33,6 +33,8 @@ Session::Session(const std::string &path) {
             agents.push_back(agentTemp);
 
     }
+    infectedNodes = new queue<int>;
+
 
 };
 
