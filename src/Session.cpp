@@ -6,6 +6,10 @@
 #include <fstream>
 #include "json.hpp"
 #include "Session.h"
+#include "Agent.h"
+#include "Tree.h"
+#include "Graph.h"
+
 
 using json = nlohmann::json;
 using namespace std;
@@ -17,6 +21,11 @@ Session::Session(const std::string &path) {
     g=Graph(j["graph"]);
     treeType= j["tree"];
 
+    for(auto& agent:j["agents"])
+    {
+        //auto *temp = &agent;
+        agents.push_back(agent);
+    }
 
 };
 
