@@ -12,7 +12,14 @@ Tree::~Tree() {
 }
 
 Tree::Tree(const Tree &other) {
-
+    if (node == nullptr)
+    {
+        return nullptr;
+    }
+    else
+    {
+        Tree *node1 = new Tree(other.node);
+    }
 }
 
 int Tree::getNode() {
@@ -20,15 +27,7 @@ int Tree::getNode() {
 }
 
 void Tree::clone() const {
-  if (node == nullptr)
-  {
-      return nullptr;
-  }
-  else
-  {
-      Tree *node = new Tree(getNode());
 
-  }
 
 
 }
