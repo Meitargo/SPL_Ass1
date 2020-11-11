@@ -19,10 +19,24 @@ Tree::~Tree() {
     Tree* temp = other.clone();
 }
 
+//assignment operator
 const Tree & Tree::operator=(const Tree &other) {
     Tree* temp = other.clone();
     return *this;
 }
+
+
+// move constructor
+Tree::Tree(Tree &&other) {
+    Tree* temp = other.clone();
+}
+
+//move assignment operator
+const Tree & Tree::operator=(Tree &&other) {
+    Tree* temp = other.clone();
+    return *this;
+}
+
 
 int Tree::getNode() {
     return node;
