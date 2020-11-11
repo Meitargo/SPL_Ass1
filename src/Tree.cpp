@@ -16,7 +16,7 @@ Tree::~Tree() {
 
 //copy constructor
  Tree::Tree(const Tree &other) {
-
+    Tree* temp = other.clone();
 }
 
 int Tree::getNode() {
@@ -30,15 +30,15 @@ void Tree::addChild(const Tree &child) {
     children.push_back(tempChild);
 }
 
-Tree * CycleTree::clone() const {
+Tree* CycleTree::clone() const {
     return new CycleTree(*this);
 }
 
-Tree * MaxRankTree::clone() const {
+Tree* MaxRankTree::clone() const {
     return new MaxRankTree(*this);
 }
 
-Tree * RootTree::clone() const {
+Tree* RootTree::clone() const {
     return new RootTree(*this);
 }
 

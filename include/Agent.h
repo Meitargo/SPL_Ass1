@@ -11,7 +11,7 @@ public:
     virtual void act(Session& session)=0;
 
     //methods we add:
-    virtual Agent* clone() const =0;
+    virtual Agent* clone() =0;
 };
 
 
@@ -22,7 +22,7 @@ public:
     virtual void act(Session &session);
 
     //methods we add
-    virtual Agent *clone() const;
+    virtual Agent *clone();
 };
 
 
@@ -35,7 +35,7 @@ public:
 
 
     //methods we add
-    virtual Agent* clone() const;
+    virtual Agent* clone() ;
 
 private:
     const int nodeInd;
