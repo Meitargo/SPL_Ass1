@@ -8,7 +8,6 @@
 
 Agent::Agent() {};
 
-
 //contact tracer
 ContactTracer::ContactTracer() {};
 
