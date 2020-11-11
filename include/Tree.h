@@ -16,7 +16,7 @@ public:
     const Tree& operator = (Tree && other); //move assignment operator - check const
 
     void addChild(const Tree& child);
-   // const Tree& getChild(int) const; we didny use it yet
+   // const Tree& getChild(int) const; we didnt use it yet
 
 
 
