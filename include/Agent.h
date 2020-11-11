@@ -6,7 +6,6 @@
 
 class Agent{
 public:
-    //ruleOf5
     Agent();
 
     //methods
