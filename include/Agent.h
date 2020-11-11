@@ -23,8 +23,8 @@ public:
 
     //methods we add
     virtual Agent *clone() const;
-}
 };
+
 
 
 class Virus: public Agent{
