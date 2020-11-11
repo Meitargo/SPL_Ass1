@@ -19,6 +19,11 @@ Tree::~Tree() {
     Tree* temp = other.clone();
 }
 
+const Tree & Tree::operator=(const Tree &other) {
+    Tree* temp = other.clone();
+    return *this;
+}
+
 int Tree::getNode() {
     return node;
 }

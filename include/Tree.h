@@ -10,6 +10,7 @@ public:
     Tree(int rootLabel);
     ~Tree(); //destructor
     Tree(const Tree &other); //copy constructor
+    const Tree& operator= (const Tree & other);//assignment copy constructor - check const
 
     void addChild(const Tree& child);
     const Tree& getChild(int) const;
