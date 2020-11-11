@@ -63,5 +63,10 @@ const queue<int> &Session::getInfectedNodes() const {
     return infectedNodes;
 }
 
+const vector<Agent*> Session::getAgents() const {
+    return agents;
+}
+
+
 
 

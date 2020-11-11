@@ -32,6 +32,7 @@ public:
 
     //methods we add
     const queue<int> &getInfectedNodes() const;
+    const vector<Agent*> getAgents() const;
 
 
 private:

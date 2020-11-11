@@ -14,30 +14,35 @@ Tree::~Tree() {
     }
 }
 
-Tree::Tree(const Tree &other) {
-    if (node == nullptr)
-    {
-        return nullptr;
-    }
-    else
-    {
-        Tree *node1 = new Tree(other.node);
-    }
+//copy constructor
+ Tree::Tree(const Tree &other) {
+
 }
 
 int Tree::getNode() {
     return node;
 }
 
-void Tree::clone() const {
-
-
-
-}
 
 void Tree::addChild(const Tree &child) {
-    children.push_back(&child);
+
+    Tree* tempChild = child.clone();
+    children.push_back(tempChild);
 }
+
+Tree * CycleTree::clone() const {
+    return new CycleTree(*this);
+}
+
+Tree * MaxRankTree::clone() const {
+    return new MaxRankTree(*this);
+}
+
+Tree * RootTree::clone() const {
+    return new RootTree(*this);
+}
+
+
 
 
 
