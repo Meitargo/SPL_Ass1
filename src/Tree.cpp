@@ -3,6 +3,7 @@
 //
 
 # include "Tree.h"
+# include "Session.h"
 
 //ruleOf5
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
@@ -49,6 +50,12 @@ void Tree::addChild(const Tree &child) {
 }
 
 Tree * Tree::createTree(const Session &session, int rootLabel) {
+      if(TreeType == Cycle)
+           Tree newTree = new CycleTree(rootLabel,)
+      else if(TreeType == MaxRank)
+          Tree newTree = new MaxRankTree(rootLable);
+      else if(TreeType == Root)
+        Tree newTree = new MaxRankTree(rootLable);
 
 }
 //-------------------------------------------------------------endTreeMethods

@@ -20,7 +20,15 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
     json j;
     j << i;
     g=Graph(j["graph"]);
-    treeType= j["tree"];
+
+    //initialize treeType - check
+    if(j["tree"]=="C")
+        treeType = Cycle;
+    else if(j["tree"]=="M")
+        treeType = MaxRank;
+    else if(j["tree"]=="R")
+        treeType = Root;
+
 
     for(auto& agent:j["agents"])
     {
