@@ -8,11 +8,6 @@ class Agent{
 public:
     //ruleOf5
     Agent();
-    ~Agent(); //destructor
-    Agent(const Agent &other); //copy constructor
-    const Agent& operator= (const Agent & other);//assignment operator - check const
-    Agent(Agent && other); // move constructor
-    const Agent& operator = (Agent && other); //move assignment operator - check const
 
     //methods
     virtual void act(Session& session)=0;
