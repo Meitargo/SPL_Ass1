@@ -42,9 +42,14 @@ int Tree::getNode() {
 }
 //--------------------------------------------------------------end ruleOf5
 //Methods-Tree
+
 void Tree::addChild(const Tree &child) {
      Tree* tempChild = child.clone();
      children.push_back(tempChild);
+}
+
+Tree * Tree::createTree(const Session &session, int rootLabel) {
+
 }
 //-------------------------------------------------------------endTreeMethods
 
@@ -73,9 +78,7 @@ Tree* RootTree::clone() const {
 }
 
 
-Tree * Tree::createTree(const Session &session, int rootLabel) {
 
-}
 
 
 
