@@ -7,6 +7,7 @@ class Session;
 
 class Tree{
 public:
+    //ruleOf5
     Tree(int rootLabel);
     ~Tree(); //destructor
     Tree(const Tree &other); //copy constructor

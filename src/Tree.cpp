@@ -4,6 +4,7 @@
 
 # include "Tree.h"
 
+//ruleOf5
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
 
 Tree::~Tree() {
