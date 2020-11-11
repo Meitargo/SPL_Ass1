@@ -7,29 +7,32 @@ class Agent{
 public:
     Agent();
 
+    //methods
     virtual void act(Session& session)=0;
 
     //methods we add:
     virtual Agent* clone() const =0;
 };
 
-class ContactTracer: public Agent{
+
+class ContactTracer: public Agent {
 public:
     ContactTracer();
-
-    virtual void act(Session& session);
+    //methods
+    virtual void act(Session &session);
 
     //methods we add
-    virtual Agent* clone() const;
-    }
+    virtual Agent *clone() const;
+}
 };
 
 
 class Virus: public Agent{
 public:
+    //methods
     Virus(int nodeInd);
-
     virtual void act(Session& session);
+
 
     //methods we add
     virtual Agent* clone() const;

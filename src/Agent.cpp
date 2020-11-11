@@ -23,9 +23,11 @@ void ContactTracer::act(Session &session) {
     }
 }
 
-Agent * ContactTracer::clone() const {
+    Agent * ContactTracer::clone() const {
     return new ContactTracer(*this);
 }
+
+
 
 
 //visrus
