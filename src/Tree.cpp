@@ -7,8 +7,8 @@
 //ruleOf5
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
 
+//destructor
 Tree::~Tree() {
-    //destructor
     for(auto& children:children)
     {
        delete children;
@@ -26,7 +26,6 @@ const Tree & Tree::operator=(const Tree &other) {
     return *this;
 }
 
-
 // move constructor
 Tree::Tree(Tree &&other) {
     Tree* temp = other.clone();
@@ -38,28 +37,38 @@ const Tree & Tree::operator=(Tree &&other) {
     return *this;
 }
 
-
 int Tree::getNode() {
     return node;
 }
-
-
+//--------------------------------------------------------------end ruleOf5
+//Methods-Tree
 void Tree::addChild(const Tree &child) {
-
-    Tree* tempChild = child.clone();
-    children.push_back(tempChild);
+     Tree* tempChild = child.clone();
+     children.push_back(tempChild);
 }
+//-------------------------------------------------------------endTreeMethods
+
+//CycleTreeMethods
+CycleTree::CycleTree(int rootLabel, int currCycle):node(rootLabel), currCycle(currCycle) {};
 
 Tree* CycleTree::clone() const {
     return new CycleTree(*this);
 }
 
+
+//MaxRankTreeMethods
 Tree* MaxRankTree::clone() const {
     return new MaxRankTree(*this);
 }
 
+//RootTreeMethods
 Tree* RootTree::clone() const {
     return new RootTree(*this);
+}
+
+
+Tree * Tree::createTree(const Session &session, int rootLabel) {
+
 }
 
 

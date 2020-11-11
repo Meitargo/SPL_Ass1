@@ -6,7 +6,6 @@
 #include "Session.h"
 
 
-
 Agent::Agent() {};
 
 
@@ -23,11 +22,9 @@ void ContactTracer::act(Session &session) {
     }
 }
 
-    Agent * ContactTracer::clone() {
+Agent* ContactTracer::clone() const{
     return new ContactTracer(*this);
 }
-
-
 
 
 //visrus
@@ -40,6 +37,6 @@ void Virus::act(int &session) {
 
 }
 
-Agent* Virus::clone() {
+Agent* Virus::clone() const{
     return new Virus(*this);
 }

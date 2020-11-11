@@ -2,16 +2,23 @@
 #define AGENT_H_
 
 #include <vector>
+#include "Session.h"
 
 class Agent{
 public:
+    //ruleOf5
     Agent();
+    ~Agent(); //destructor
+    Agent(const Agent &other); //copy constructor
+    const Agent& operator= (const Agent & other);//assignment operator - check const
+    Agent(Agent && other); // move constructor
+    const Agent& operator = (Agent && other); //move assignment operator - check const
 
     //methods
     virtual void act(Session& session)=0;
 
     //methods we add:
-    virtual Agent* clone() =0;
+    virtual Agent* clone() const =0;
 };
 
 
@@ -22,7 +29,7 @@ public:
     virtual void act(Session &session);
 
     //methods we add
-    virtual Agent *clone();
+    virtual Agent *clone() const;
 };
 
 
@@ -35,7 +42,7 @@ public:
 
 
     //methods we add
-    virtual Agent* clone() ;
+    virtual Agent* clone() const;
 
 private:
     const int nodeInd;
