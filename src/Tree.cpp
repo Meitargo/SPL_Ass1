@@ -48,18 +48,24 @@ void Tree::addChild(const Tree &child) {
 }
 //-------------------------------------------------------------endTreeMethods
 
-//CycleTreeMethods
-CycleTree::CycleTree(int rootLabel, int currCycle):node(rootLabel), currCycle(currCycle) {};
+//CycleTree constructor
+CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {};
 
+//CycleTreeMethods
 Tree* CycleTree::clone() const {
     return new CycleTree(*this);
 }
 
+//MaxRankTree constructor
+MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};
 
 //MaxRankTreeMethods
 Tree* MaxRankTree::clone() const {
     return new MaxRankTree(*this);
 }
+
+//RootTree constructor
+RootTree::RootTree(int rootLabel):Tree(rootLabel) {}
 
 //RootTreeMethods
 Tree* RootTree::clone() const {
