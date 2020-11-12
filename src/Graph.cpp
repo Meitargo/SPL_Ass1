@@ -26,3 +26,8 @@ bool Graph::isInfected(int nodeInd) {
     }
 }
 
+//methods we add
+vector<std::vector<int>> Graph::getEdges() {
+    return edges;
+}
+

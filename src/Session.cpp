@@ -48,7 +48,7 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 
 //methods
 void Session::addAgent(const Agent &agent) {
-    agents.push_back(agent);
+    agents.push_back(agent.clone());
 }
 
 void Session::enqueueInfected(int nodeInd) {
@@ -79,7 +79,13 @@ Graph Session::getGraph() {
     return g;
 }
 
-void Session::removeEdges(Graph &graph, int nodeToDelete) {
+void Session::removeEdges(Graph graph, int nodeToDelete) {
+    vector<std::vector<int>> tempEdges = graph.getEdges();
+   for(int i=0; i<tempEdges.size(); i++)
+   {
+       tempEdges[nodeToDelete][i] = 0;
+       tempEdges[i][nodeToDelete] = 0;
+   }
 
 }
 

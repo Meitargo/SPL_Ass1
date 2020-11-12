@@ -10,14 +10,18 @@
 Agent::Agent() {};
 
 //contact tracer
-ContactTracer::ContactTracer() {};
+ContactTracer::ContactTracer():Agent() {};
 
 //methods
 void ContactTracer::act(Session &session) {
     if (!session.getInfectedNodes().empty()){
-       Tree* tree = createTree(session,session.dequeueInfected()); //check
-       tree->traceTree(); //check   - the node need to disconnect
-       session.removeEdges(session.getGraph(),tree->traceTree());
+       Tree* tree = Tree::createTree(session,session.dequeueInfected()); // take node from the infected node and create tree
+       int node = tree->traceTree(); //check   - the node need to dis
+       session.removeEdges(session.getGraph(),node);
+       Virus *v = new Virus(node);
+       ContactTracer *cT = new ContactTracer();
+       session.addAgent(*cT);
+       session.addAgent(*v);
        // createTree By treeType from the session
        //tree.maxRankTree();
        //l1: we should build max rank tree
@@ -33,7 +37,7 @@ Agent* ContactTracer::clone() const{
 
 //visrus
 //constractor
-Virus::Virus(int nodeInd): nodeInd(nodeInd) {};
+Virus::Virus(int nodeInd):Agent(), nodeInd(nodeInd) {};
 
 //methods
 void Virus::act(int &session) {

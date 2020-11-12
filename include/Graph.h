@@ -13,7 +13,7 @@ public:
 
     //methods we add
     Tree* BFS (int source, Graph currGraph);
-
+    vector<std::vector<int>> getEdges();
 
 private:
     std::vector<std::vector<int>> edges;

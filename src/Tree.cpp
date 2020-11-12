@@ -93,7 +93,7 @@ Tree* RootTree::clone() const {
 }
 
 int RootTree::traceTree() {
-    if()
+
 }
 
 
