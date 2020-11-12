@@ -43,6 +43,7 @@ Virus::Virus(int nodeInd):Agent(), nodeInd(nodeInd) {};
 void Virus::act(int &session) {
 
 
+
 }
 
 Agent* Virus::clone() const{
