@@ -50,12 +50,16 @@ void Tree::addChild(const Tree &child) {
 }
 
 Tree * Tree::createTree(const Session &session, int rootLabel) {
+    Tree* newTree;
+
       if(TreeType == Cycle)
-           Tree newTree = new CycleTree(rootLabel,)
+           newTree = new CycleTree(rootLabel,1); //change currCycle
       else if(TreeType == MaxRank)
-          Tree newTree = new MaxRankTree(rootLable);
+           newTree = new MaxRankTree(rootLable);
       else if(TreeType == Root)
-        Tree newTree = new MaxRankTree(rootLable);
+           newTree = new MaxRankTree(rootLable);
+
+      return newTree;
 
 }
 //-------------------------------------------------------------endTreeMethods
