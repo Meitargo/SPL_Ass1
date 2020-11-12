@@ -75,6 +75,15 @@ const vector<Agent*> Session::getAgents() const {
     return agents;
 }
 
+Graph Session::getGraph() {
+    return g;
+}
+
+void Session::removeEdges(Graph &graph, int nodeToDelete) {
+
+}
+
+
 
 
 

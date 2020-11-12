@@ -4,6 +4,7 @@
 
 #include "Agent.h"
 #include "Session.h"
+#include "Tree.h"
 
 
 Agent::Agent() {};
@@ -14,7 +15,11 @@ ContactTracer::ContactTracer() {};
 //methods
 void ContactTracer::act(Session &session) {
     if (!session.getInfectedNodes().empty()){
-       session.dequeueInfected();
+       Tree* tree = createTree(session,session.dequeueInfected()); //check
+       tree->traceTree(); //check   - the node need to disconnect
+       session.removeEdges(session.getGraph(),tree->traceTree());
+       // createTree By treeType from the session
+       //tree.maxRankTree();
        //l1: we should build max rank tree
        //l2: we should delete the graph edges of the return l2
        // add to agents list

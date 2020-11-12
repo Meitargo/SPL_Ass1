@@ -2,6 +2,7 @@
 #define GRAPH_H_
 
 #include <vector>
+#include "Tree.h"
 
 class Graph{
 public:
@@ -9,6 +10,11 @@ public:
 
     void infectNode(int nodeInd);
     bool isInfected(int nodeInd);
+
+    //methods we add
+    Tree* BFS (int source, Graph currGraph);
+
+
 private:
     std::vector<std::vector<int>> edges;
 }

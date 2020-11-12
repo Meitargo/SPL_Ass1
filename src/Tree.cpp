@@ -57,7 +57,7 @@ Tree * Tree::createTree(const Session &session, int rootLabel) {
       else if(session.getTreeType() == MaxRank)
            newTree = new MaxRankTree(rootLabel);
       else if(session.getTreeType() == Root)
-           newTree = new MaxRankTree(rootLabel);
+           newTree = new RootTree(rootLabel);
 
       return newTree;
 
@@ -80,12 +80,20 @@ Tree* MaxRankTree::clone() const {
     return new MaxRankTree(*this);
 }
 
+int MaxRankTree::traceTree() {
+
+}
+
 //RootTree constructor
 RootTree::RootTree(int rootLabel):Tree(rootLabel) {}
 
 //RootTreeMethods
 Tree* RootTree::clone() const {
     return new RootTree(*this);
+}
+
+int RootTree::traceTree() {
+    if()
 }
 
 

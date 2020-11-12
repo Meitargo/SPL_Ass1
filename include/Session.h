@@ -25,14 +25,18 @@ public:
     void setGraph(const Graph& graph);
 
 
+
     void enqueueInfected(int);
     int dequeueInfected();
-    TreeType getTreeType() const;
+
 
 
     //methods we add
     const queue<int> &getInfectedNodes() const;
     const vector<Agent*> getAgents() const;
+    TreeType getTreeType() const; //check if ours
+    void removeEdges(Graph graph, int nodeToDelete);
+    Graph getGraph();
 
 
 private:
