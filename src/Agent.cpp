@@ -16,7 +16,9 @@ ContactTracer::ContactTracer():Agent() {};
 //methods
 void ContactTracer::act(Session &session) {
     if (!session.getInfectedNodes().empty()){
-       Tree* tree = Tree::createTree(session,session.dequeueInfected()); // take node from the infected node and create tree
+        int source = session.dequeueInfected();
+       Tree* tree = Tree::createTree(session,source); // take node from the infected node and create tree
+       session.getGraph().BFS(tree);
        int node = tree->traceTree(); //check   - the node need to dis
        session.removeEdges(session.getGraph(),node);
        Virus *v = new Virus(node);
