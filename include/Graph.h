@@ -13,7 +13,7 @@ public:
     bool isInfected(int nodeInd);
 
     //methods we add
-    Tree* BFS (Tree *tree);
+    Tree* BFS (Session session,Tree *source);
     vector<std::vector<int>> getEdges();
     void addEdges(int a, int b);
 

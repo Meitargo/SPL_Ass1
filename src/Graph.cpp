@@ -35,30 +35,26 @@ vector<std::vector<int>> Graph::getEdges() {
 
 
 
-
-
-
-Tree * Graph::BFS(int source) {
+Tree * Graph::BFS(Session session,Tree *source) {
     int v = edges.size();//number of vertices
-    bool *visited = new bool[v];
-    for (int i = 0; i < v; i++) {
-        visited[i] = false;
-    }
+    vector<bool> *visited = new vector<bool>;
+    queue<Tree> *neighboors = new queue<Tree>;
 
-    queue<int> *neighboors = new queue<int>;
-    Tree *bfsTree = new Tree(source); // needs to apply virtual methods in tree
-    visited[source] = true;
-    neighboors->push(source);
+    visited->assign(v,false);
+
+    Tree *bfsTree =  source->createTree(session,source->getNode());// needs to apply virtual methods in tree
+    visited[source->getNode(),true]; //check if this how we change value in vector
+    neighboors->push(*source);
 
     while (!neighboors->empty())
     {
-        source = neighboors->front();
+        source = &neighboors->front();
         neighboors->pop();
         for(int i=0 ; i<v; i++)
         {
-            if(!visited[i] && edges[source][i]==1)
+            if(!(&visited[i]) && edges[source->getNode()][i]==1)
             {
-                visited[i]= true;
+                visited[i, true];//check if this how we change value in vector
                 neighboors->push(i);
             }
 
