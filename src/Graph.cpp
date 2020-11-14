@@ -39,7 +39,8 @@ vector<std::vector<int>> Graph::getEdges() {
 
 Tree * Graph::BFS(int source, Graph currGraph) {
    int v=currGraph.edges.size();//number of vertices
-   queue<int> *visited=new queue<int>;
+   bool visited []=new bool[v];
+   queue<int> neighboors=new queue<int>;
 
 
 
