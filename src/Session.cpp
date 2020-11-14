@@ -55,6 +55,7 @@ void Session::enqueueInfected(int nodeInd) {
     infectedNodes.push(nodeInd);
 }
 
+
 int Session::dequeueInfected() {
     int first = infectedNodes.front();
     infectedNodes.pop();
@@ -75,7 +76,7 @@ const vector<Agent*> Session::getAgents() const {
     return agents;
 }
 
-Graph Session::getGraph() {
+ Graph Session::getGraph() const {
     return g;
 }
 

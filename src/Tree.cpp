@@ -4,6 +4,7 @@
 
 # include "Tree.h"
 # include "Session.h"
+#include "Graph.h"
 
 //ruleOf5
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
@@ -58,6 +59,8 @@ Tree * Tree::createTree(const Session &session, int rootLabel) {
            newTree = new MaxRankTree(rootLabel);
       else if(session.getTreeType() == Root)
            newTree = new RootTree(rootLabel);
+
+      session.getGraph().BFS(rootLabel);
 
       return newTree;
 

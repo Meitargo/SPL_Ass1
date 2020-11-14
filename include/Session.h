@@ -36,7 +36,7 @@ public:
     const vector<Agent*> getAgents() const;
     TreeType getTreeType() const; //check if ours
     void removeEdges(Graph graph, int nodeToDelete);
-    Graph getGraph();
+    Graph getGraph() const;
 
 
 private:

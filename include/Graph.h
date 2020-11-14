@@ -13,9 +13,10 @@ public:
     bool isInfected(int nodeInd);
 
     //methods we add
-    Tree* BFS (int source, Graph currGraph);
+    Tree* BFS (int source);
     vector<std::vector<int>> getEdges();
     void addEdges(int a, int b);
+
 
 private:
     std::vector<std::vector<int>> edges;

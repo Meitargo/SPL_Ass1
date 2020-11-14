@@ -10,7 +10,7 @@ class Tree{
 public:
     //ruleOf5
     Tree(int rootLabel);
-    ~Tree(); //destructor
+    virtual ~Tree(); //destructor
     Tree(const Tree &other); //copy constructor
     const Tree& operator= (const Tree & other);//assignment operator - check const
     Tree(Tree && other); // move constructor
