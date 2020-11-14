@@ -42,8 +42,8 @@ Tree * Graph::BFS(Session session,Tree *source) {
 
     visited->assign(v,false);
 
-    Tree *bfsTree =  source->createTree(session,source->getNode());// needs to apply virtual methods in tree
-    visited[source->getNode(),true]; //check if this how we change value in vector
+    Tree *bfsTree =  Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
+    visited->at(source->getNode()) = true;
     neighboors->push(*source);
 
     while (!neighboors->empty())
@@ -54,8 +54,11 @@ Tree * Graph::BFS(Session session,Tree *source) {
         {
             if(!(&visited[i]) && edges[source->getNode()][i]==1)
             {
-                visited[i, true];//check if this how we change value in vector
-                neighboors->push(i);
+                visited->at(i) = true;//check if this how we change value in vector
+                Tree *temp =Tree::createTree(session,i);
+                neighboors->push (*temp);
+                bfsTree->addChild(*temp);
+
             }
 
         }
