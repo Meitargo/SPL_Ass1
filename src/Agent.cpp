@@ -7,6 +7,7 @@
 #include "Tree.h"
 
 
+
 Agent::Agent() {};
 
 //contact tracer
@@ -30,9 +31,11 @@ void ContactTracer::act(Session &session) {
     }
 }
 
-Agent* ContactTracer::clone() const{
+    Agent * ContactTracer::clone () {
     return new ContactTracer(*this);
 }
+
+
 
 
 //visrus
@@ -46,6 +49,6 @@ void Virus::act(int &session) {
 
 }
 
-Agent* Virus::clone() const{
+Agent* Virus::clone() {
     return new Virus(*this);
 }

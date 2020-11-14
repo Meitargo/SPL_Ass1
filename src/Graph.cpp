@@ -5,6 +5,7 @@
 #include "Graph.h"
 #include <vector>
 #include "Session.h"
+#include <queue>
 
 using namespace std;
 
@@ -29,5 +30,19 @@ bool Graph::isInfected(int nodeInd) {
 //methods we add
 vector<std::vector<int>> Graph::getEdges() {
     return edges;
+}
+
+
+
+
+
+
+Tree * Graph::BFS(int source, Graph currGraph) {
+   int v=currGraph.edges.size();//number of vertices
+   queue<int> *visited=new queue<int>;
+
+
+
+
 }
 
