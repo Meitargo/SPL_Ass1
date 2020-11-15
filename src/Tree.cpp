@@ -5,6 +5,7 @@
 # include "Tree.h"
 # include "Session.h"
 #include "Graph.h"
+#include "queue"
 
 //ruleOf5
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
@@ -73,11 +74,47 @@ vector<Tree *> Tree::getChildren() {
 //-------------------------------------------------------------endTreeMethods
 
 //CycleTree constructor
-CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {};
+CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {
+};
 
 //CycleTreeMethods
 Tree* CycleTree::clone() const {
     return new CycleTree(*this);
+}
+
+int CycleTree::traceTree() {
+
+
+    Tree *tempNode = this;
+    int childrenSize ;
+    queue<Tree> *nodes = new queue<Tree>;
+    nodes->push(*tempNode);
+
+    while(currCycle+1!=0)
+    {
+        tempNode = &nodes->front();
+        childrenSize = tempNode->getChildren().size();
+
+        while(childrenSize+1>0)
+        {
+              tempNode = &nodes->front();
+
+              nodes->pop();
+
+              for(int i=0; i<tempNode->getChildren().size();i++)
+              {
+                  //insertChildrenToQueue
+                  nodes->push(*tempNode->getChildren()[i]);
+              }
+
+              childrenSize--;
+
+         }
+
+            currCycle--;
+
+    }
+    return nodes->front().getNode();
 }
 
 //MaxRankTree constructor
