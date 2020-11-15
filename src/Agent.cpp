@@ -40,9 +40,11 @@ void ContactTracer::act(Session &session) {
 Virus::Virus(int nodeInd):Agent(), nodeInd(nodeInd) {};
 
 //methods
-void Virus::act(int &session) {
+void Virus::act(Session &session) {
 
-
+Tree* tree = Tree::createTree(session,nodeInd);
+Virus *carryVirus = new Virus(session.getGraph().BFS(session,tree)->getChildren().front()->getNode());
+session.addAgent(*carryVirus);
 
 }
 
