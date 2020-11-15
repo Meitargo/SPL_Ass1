@@ -113,7 +113,7 @@ Tree* RootTree::clone() const {
 }
 
 int RootTree::traceTree() {
-
+    return node;
 }
 
 
