@@ -15,7 +15,7 @@ using json = nlohmann::json;
 using namespace std;
 
 // initialize
-Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(){
+Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(), status(){
     ifstream i(path);
     json j;
     j << i;
@@ -29,6 +29,10 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
     else if(j["tree"]=="R")
         treeType = Root;
 
+    for(int i=0; i<g.getEdges().size(); i++)
+    {
+        status[i] = 0;
+    }
 
     for(auto& agent:j["agents"])
     {
@@ -37,11 +41,16 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
             if(agent[0]=="C")
                 agentTemp = new ContactTracer();
             else
+            {
                 agentTemp = new Virus((int) agent[1]);
+                status[(int)agent[1]] = 1;
+            }
 
             agents.push_back(agentTemp);
 
     }
+
+
    // infectedNodes = new queue<Tree>;      we should check if the initalize list is enough
 
 };
@@ -88,6 +97,14 @@ void Session::removeEdges(Graph graph, int nodeToDelete) {
        tempEdges[i][nodeToDelete] = 0;
    }
 
+}
+
+vector<int> Session::getStatus() const {
+    return status;
+}
+
+void Session::setStatus(int node, int newStat) {
+    status[node] = newStat;
 }
 
 
