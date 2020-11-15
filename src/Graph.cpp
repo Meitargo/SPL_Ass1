@@ -23,10 +23,10 @@ Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){
 }
 
 bool Graph::isInfected(int nodeInd) {
-    if(()) {
+    return (Session::getStatus()[nodeInd] == 2);
 
-    }
 }
+
 
 //methods we add
 vector<std::vector<int>> Graph::getEdges() {

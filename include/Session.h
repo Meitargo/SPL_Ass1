@@ -37,7 +37,7 @@ public:
     TreeType getTreeType() const; //check if ours
     void removeEdges(Graph graph, int nodeToDelete);
     Graph getGraph() const;
-    vector<int> getStatus() const;
+    static vector<int> getStatus() ;
     void setStatus(int node,int stat);
 
 
@@ -46,7 +46,7 @@ private:
     TreeType treeType;
     std::vector<Agent*> agents;
     std::queue<int> infectedNodes;
-    std::vector<int> status;
+    static std::vector<int> status;
 };
 
 #endif

@@ -55,6 +55,32 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 
 };
 
+void Session::simulate() {
+    while()
+    {
+        for(int i=0; i<agents.size(); i++)
+        {
+            agents[i]->act(*this);
+        }
+    }
+
+    for(int i=0; i<status.size(); i++)
+    {
+        if(status[i] == 2)
+        {
+            for(int i=0; i<status.size(); i++)
+            {
+                for(int j=0; j<status.size(); j++
+                {
+                    if(getGraph().getEdges()[i][j] == 1 & status[j] ==2) {
+                    }
+
+                }
+            }
+        }
+    }
+
+}
 //methods
 void Session::addAgent(const Agent &agent) {
     agents.push_back(agent.clone());
@@ -76,6 +102,9 @@ TreeType Session::getTreeType() const {
     return treeType;
 }
 
+void Session::setGraph(const Graph &graph) {
+
+}
 //methods we added
 const queue<int> &Session::getInfectedNodes() const {
     return infectedNodes;
@@ -99,7 +128,7 @@ void Session::removeEdges(Graph graph, int nodeToDelete) {
 
 }
 
-vector<int> Session::getStatus() const {
+vector<int> Session::getStatus()  {
     return status;
 }
 
