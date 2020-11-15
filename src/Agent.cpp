@@ -25,11 +25,6 @@ void ContactTracer::act(Session &session) {
        ContactTracer *cT = new ContactTracer();
        session.addAgent(*cT);
        session.addAgent(*v);
-       // createTree By treeType from the session
-       //tree.maxRankTree();
-       //l1: we should build max rank tree
-       //l2: we should delete the graph edges of the return l2
-       // add to agents list
     }
 }
 

@@ -39,9 +39,7 @@ const Tree & Tree::operator=(Tree &&other) {
     return *this;
 }
 
-int Tree::getNode() {
-    return node;
-}
+
 //--------------------------------------------------------------end ruleOf5
 //Methods-Tree
 
@@ -59,10 +57,18 @@ Tree * Tree::createTree(const Session &session, int rootLabel) {
            newTree = new MaxRankTree(rootLabel);
       else if(session.getTreeType() == Root)
            newTree = new RootTree(rootLabel);
-      //newTree->BFS(rootLabel);
 
       return newTree;
 
+}
+
+//methods we add
+int Tree::getNode() {
+    return node;
+}
+
+vector<Tree *> Tree::getChildren() {
+    return children;
 }
 //-------------------------------------------------------------endTreeMethods
 
@@ -75,7 +81,8 @@ Tree* CycleTree::clone() const {
 }
 
 //MaxRankTree constructor
-MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};
+MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {
+};
 
 //MaxRankTreeMethods
 Tree* MaxRankTree::clone() const {
@@ -84,6 +91,17 @@ Tree* MaxRankTree::clone() const {
 
 int MaxRankTree::traceTree() {
 
+    int sizeChild=0;
+    int maxChild=0;
+    for (int i = 0; i < children.size(); i++) {
+        if(children[i]->getChildren().size() > sizeChild)
+        {
+            sizeChild = children[i]->getNode();
+            maxChild=i;
+        }
+    }
+
+    return maxChild;
 }
 
 //RootTree constructor
