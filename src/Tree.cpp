@@ -37,6 +37,7 @@ const Tree & Tree::operator=(const Tree &other) {
 
 // move constructor
 Tree::Tree(Tree &&other) {
+    if(this==other)
     Tree* temp = other.clone();
 }
 
