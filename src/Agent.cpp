@@ -32,8 +32,8 @@ void ContactTracer::act(Session &session) {
 }
 
 
-    Agent * ContactTracer::*clone () {
-    return new ContactTracer(*this);
+    Agent*  ContactTracer::clone () const {
+    return new ContactTracer(*this) ;
 }
 
 
@@ -54,6 +54,6 @@ void Virus::act(Session &session) {
 }
 
 
-Agent* Virus::clone() {
+Agent* Virus::clone() const{
     return new Virus(*this);
 }
