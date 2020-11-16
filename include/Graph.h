@@ -15,7 +15,7 @@ public:
     //methods we add
     Tree* BFS (Session session,Tree *source);
     vector<std::vector<int>> getEdges();
-    void addEdges(int a, int b);
+   // void addEdges(int a, int b);
 
 
 private:
