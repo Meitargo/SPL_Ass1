@@ -10,15 +10,18 @@
 
 Agent::Agent() {};
 
+
 //contact tracer
 ContactTracer::ContactTracer():Agent() {};
 
+
 //methods
 void ContactTracer::act(Session &session) {
-    if (!session.getInfectedNodes().empty()){
-        int source = session.dequeueInfected();
+    if (!session.getInfectedNodes().empty()) //if the queue of the infected is not empty
+    {
+       int source = session.dequeueInfected();
        Tree* tree = Tree::createTree(session,source); // take node from the infected node and create tree
-       session.getGraph().BFS(session,tree);
+       session.getGraph().BFS(session,tree); //built bfs tree from source
        int node = tree->traceTree(); //check   - the node need to dis
        session.removeEdges(session.getGraph(),node);
        Virus *v = new Virus(node);
@@ -28,7 +31,8 @@ void ContactTracer::act(Session &session) {
     }
 }
 
-    Agent * ContactTracer::clone () {
+
+    Agent * ContactTracer::*clone () {
     return new ContactTracer(*this);
 }
 
@@ -36,20 +40,19 @@ void ContactTracer::act(Session &session) {
 
 
 //visrus
-//constractor
+
 Virus::Virus(int nodeInd):Agent(), nodeInd(nodeInd) {};
 
 //methods
 void Virus::act(Session &session) {
-
-Tree* tree = Tree::createTree(session,nodeInd);
-Virus *carryVirus = new Virus(session.getGraph().BFS(session,tree)->getChildren().front()->getNode());
-session.addAgent(*carryVirus);
-session.setStatus(nodeInd, 2);
-session.setStatus(carryVirus->nodeInd,1);
-
-
+     Tree* tree = Tree::createTree(session,nodeInd);
+     int indCarrrVirus=session.getGraph().BFS(session,tree)->getChildren().front()->getNode();//check about root of bfs
+     Virus *carryVirus = new Virus(indCarrrVirus);
+     session.addAgent(*carryVirus);// add our new carry virus to the agents list
+     session.setStatus(nodeInd, 2);//change the status of nodeind from carry to sick
+     session.setStatus(carryVirus->nodeInd,1);//change the new carry from health to carry
 }
+
 
 Agent* Virus::clone() {
     return new Virus(*this);

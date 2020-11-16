@@ -7,15 +7,21 @@
 #include "Graph.h"
 #include "queue"
 
-//ruleOf5
+
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
+
+
+void Tree::clear() {
+    for(auto& children:children)
+    {
+        delete children;
+    }
+}
+//ruleOf5
 
 //destructor
 Tree::~Tree() {
-    for(auto& children:children)
-    {
-       delete children;
-    }
+   clear();
 }
 
 //copy constructor

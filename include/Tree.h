@@ -8,8 +8,10 @@ class Session;
 
 class Tree{
 public:
-    //ruleOf5
+
     Tree(int rootLabel);
+
+    //ruleOf5
     virtual ~Tree(); //destructor
     Tree(const Tree &other); //copy constructor
     const Tree& operator= (const Tree & other);//assignment operator - check const
@@ -28,6 +30,7 @@ public:
     virtual Tree* clone() const =0;
     int getNode();
     vector<Tree*> getChildren();
+    void clear();
 
 protected:
     int node;

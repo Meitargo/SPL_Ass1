@@ -10,8 +10,9 @@
 
 using namespace std;
 
-Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){
 
+
+Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){ //we initialize the edges to be empty
     for(int i=0; i<matrix.size(); i++)
     {
         for(int j=0;j<matrix[i].size();j++)
@@ -19,20 +20,28 @@ Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){
             edges[i][j] = matrix[i][j];
         }
     }
+}//now our edges initialize to be the matrix
 
-}
 
+//Graph methods
 bool Graph::isInfected(int nodeInd) {
     return (Session::getStatus()[nodeInd] == 2);
 
 }
 
 
-//methods we add
-vector<std::vector<int>> Graph::getEdges() {
-    return edges;
+void Graph::infectNode(int nodeInd) {
+
 }
 
+
+
+
+
+//methods we add
+vector<vector<int>> Graph::getEdges() {
+    return edges;
+}
 
 
 Tree * Graph::BFS(Session session,Tree *source) {
@@ -40,9 +49,8 @@ Tree * Graph::BFS(Session session,Tree *source) {
     vector<bool> *visited = new vector<bool>;
     queue<Tree> *neighboors = new queue<Tree>;
 
-    visited->assign(v,false);
-
-    Tree *bfsTree =  Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
+    visited->assign(v,false);//initialize every cell in visited to be false
+    Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
     neighboors->push(*source);
 
@@ -54,7 +62,7 @@ Tree * Graph::BFS(Session session,Tree *source) {
         {
             if(!(&visited[i]) && edges[source->getNode()][i]==1)
             {
-                visited->at(i) = true;//check if this how we change value in vector
+                visited->at(i) = true;
                 Tree *temp =Tree::createTree(session,i);
                 neighboors->push (*temp);
                 bfsTree->addChild(*temp);
@@ -65,6 +73,6 @@ Tree * Graph::BFS(Session session,Tree *source) {
     }
 
 
-
+return bfsTree;
 }
 
