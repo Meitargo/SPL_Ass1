@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include "Tree.h"
+#include "Session.h"
 
 class Graph{
 public:
@@ -20,6 +21,6 @@ public:
 
 private:
     std::vector<std::vector<int>> edges;
-}
+};
 
 #endif

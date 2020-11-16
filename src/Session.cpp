@@ -7,8 +7,8 @@
 #include "json.hpp"
 #include "Session.h"
 #include "Agent.h"
-#include "Tree.h"
-#include "Graph.h"
+//#include "Tree.h"
+//#include "Graph.h"
 
 
 using json = nlohmann::json;
@@ -104,6 +104,7 @@ TreeType Session::getTreeType() const {
 }
 
 void Session::setGraph(const Graph &graph) {
+    g=graph;
 
 }
 //methods we added

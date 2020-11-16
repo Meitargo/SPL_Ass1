@@ -29,7 +29,7 @@ public:
     //methods we add
     virtual Tree* clone() const =0;
     int getNode();
-    vector<Tree*> getChildren();
+    std::vector<Tree*> getChildren();
     void clear();
 
 protected:
