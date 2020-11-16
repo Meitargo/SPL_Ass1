@@ -57,7 +57,6 @@ void Tree::addChild(const Tree &child) {
 
 Tree * Tree::createTree(const Session &session, int rootLabel) {
     Tree* newTree;
-
       if(session.getTreeType() == Cycle)
            newTree = new CycleTree(rootLabel,1); //change currCycle
       else if(session.getTreeType() == MaxRank)
@@ -69,19 +68,21 @@ Tree * Tree::createTree(const Session &session, int rootLabel) {
 
 }
 
+
 //methods we add
 int Tree::getNode() {
     return node;
 }
 
-vector<Tree *> Tree::getChildren() {
+vector<Tree*> Tree::getChildren() {
     return children;
 }
 //-------------------------------------------------------------endTreeMethods
 
+
+
 //CycleTree constructor
-CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {
-};
+CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {};
 
 //CycleTreeMethods
 Tree* CycleTree::clone() const {
@@ -89,8 +90,6 @@ Tree* CycleTree::clone() const {
 }
 
 int CycleTree::traceTree() {
-
-
     Tree *tempNode = this;
     int childrenSize ;
     queue<Tree> *nodes = new queue<Tree>;
@@ -104,28 +103,23 @@ int CycleTree::traceTree() {
         while(childrenSize+1>0)
         {
               tempNode = &nodes->front();
-
               nodes->pop();
-
               for(int i=0; i<tempNode->getChildren().size();i++)
               {
                   //insertChildrenToQueue
                   nodes->push(*tempNode->getChildren()[i]);
               }
-
               childrenSize--;
-
          }
-
             currCycle--;
-
     }
     return nodes->front().getNode();
 }
 
+
+
 //MaxRankTree constructor
-MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {
-};
+MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};
 
 //MaxRankTreeMethods
 Tree* MaxRankTree::clone() const {
@@ -133,7 +127,6 @@ Tree* MaxRankTree::clone() const {
 }
 
 int MaxRankTree::traceTree() {
-
     int sizeChild=0;
     int maxChild=0;
     for (int i = 0; i < children.size(); i++) {
@@ -143,7 +136,6 @@ int MaxRankTree::traceTree() {
             maxChild=i;
         }
     }
-
     return maxChild;
 }
 
