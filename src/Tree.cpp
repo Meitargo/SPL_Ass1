@@ -3,7 +3,7 @@
 //
 
 # include "Tree.h"
-//# include "Session.h"
+# include "Session.h"
 #include "Graph.h"
 
 
@@ -87,7 +87,13 @@ CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(cu
 
 //CycleTreeMethods
 Tree* CycleTree::clone() const {
-    return new CycleTree(*this);
+    Tree *tree = new CycleTree(this->node,this->currCycle);
+    for(int i=0; i<tree->getChildren().size(); i++)
+    {
+        tree->getChildren().push_back(this->children[i]);
+    }
+
+    return tree;
 }
 
 int CycleTree::traceTree() {
