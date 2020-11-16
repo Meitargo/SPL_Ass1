@@ -2,9 +2,10 @@
 #define TREE_H_
 
 #include <vector>
-#include "Graph.h"
+//#include "Graph.h"
 #include <queue>
 
+using namespace std;
 class Session;
 
 class Tree{
