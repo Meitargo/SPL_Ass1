@@ -25,13 +25,13 @@ void ContactTracer::act(Session &session) {
        session.removeEdges(session.getGraph(),node);
 
 
-       Virus *v = new Virus(node);// check - i think its not true// we need to delete it metar
+       Virus *v = new Virus(node);// check - i think its not true// we need to delete it metar----------------
 
 
        ContactTracer *cT = new ContactTracer();
        session.addAgent(*cT);
 
-       session.addAgent(*v);//we need to deldet it to it hapend in act of virud
+       session.addAgent(*v);//we need to deldet it to it hapend in act of virud----------------------------
     }
 }
 
