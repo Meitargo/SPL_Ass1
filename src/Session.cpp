@@ -52,8 +52,10 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 
 
    // infectedNodes = new queue<Tree>;      we should check if the initalize list is enough
-
+    currIteration=0;
 };
+
+
 
 void Session::simulate() {
     int HowManyInAgents=-1;
@@ -67,6 +69,7 @@ void Session::simulate() {
             agents[i]->act(*this);
         }
         HowManyInAgents=agents.size()-HowManyInAgents;
+        currcycle++;
     }
 
     for(int i=0;i<status.size();i++){
@@ -136,6 +139,10 @@ vector<int> Session::getStatus()  {
 
 void Session::setStatus(int node, int newStat) {
     status[node] = newStat;
+}
+
+int Session::getCurrIteration() const {
+    return currIteration;
 }
 
 

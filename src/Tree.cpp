@@ -95,14 +95,21 @@ Tree* CycleTree::clone() const {
 
     return tree;
 }
+////////////////////////////////////////////////////////////////////
+
+//i need to check hoe i can take curriteration from session and return the most left child in this level of the tree
+
+
+
+
 
 int CycleTree::traceTree() {
-    Tree *tempNode = this;
+    Tree *tempNode = this;// tree from ct
     int childrenSize ;
-    queue<Tree> *nodes = new queue<Tree>;
-    nodes->push(*tempNode);
+    vector<Tree> *nodes = new vector<Tree>;
+    nodes->push_back(*tempNode);
 
-    while(currCycle+1!=0)
+    while()
     {
         tempNode = &nodes->front();
         childrenSize = tempNode->getChildren().size();
@@ -123,7 +130,7 @@ int CycleTree::traceTree() {
     return nodes->front().getNode();
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////
 
 //MaxRankTree constructor
 MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};

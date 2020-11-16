@@ -50,6 +50,7 @@ public:
     vector<int> getStatus() ;
     void setStatus(int node,int stat);
 
+    int getCurrIteration() const;
 
 
 private:
@@ -59,6 +60,7 @@ private:
     std::queue<int> infectedNodes;
     std::vector<int> status;
     vector<int> infectedFinal;
+    static int currIteration;
 };
 
 #endif
