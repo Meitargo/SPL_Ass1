@@ -25,7 +25,7 @@ Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){ //we initialize t
 
 //Graph methods
 bool Graph::isInfected(int nodeInd) {
-    return (Session::getStatus()[nodeInd] == 2);
+        return (Session::getStatus()[nodeInd] == 2);
 
 }
 
