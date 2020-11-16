@@ -15,7 +15,7 @@ using json = nlohmann::json;
 using namespace std;
 
 // initialize
-Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(), status(){
+Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(), status(),infectedFinal(){
     ifstream i(path);
     json j;
     j << i;
@@ -68,6 +68,17 @@ void Session::simulate() {
         }
         HowManyInAgents=agents.size()-HowManyInAgents;
     }
+
+    for(int i=0;i<status.size();i++){
+        if(status[i]==2)
+            infectedFinal.push_back(i);
+    }
+
+    json j;
+    j["graph"]=g.getEdges();
+    j["infected"]=infectedFinal;
+    std::ofstream i("./output.json");
+    i<<j;
 
 
 }

@@ -6,6 +6,7 @@
 #include <queue>
 #include "Graph.h"
 #include "Tree.h"
+#include <list>
 
 using namespace std;
 class Agent;
@@ -49,6 +50,7 @@ private:
     std::vector<Agent*> agents;
     std::queue<int> infectedNodes;
     static std::vector<int> status;
+    vector<int> infectedFinal;
 };
 
 #endif

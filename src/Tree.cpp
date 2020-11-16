@@ -26,7 +26,7 @@ Tree::~Tree() {
 
 //copy constructor
  Tree::Tree(const Tree &other) {
-    Tree* temp = other.clone();
+      Tree* temp = other.clone();
 }
 
 //assignment operator
