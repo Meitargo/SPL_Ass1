@@ -130,7 +130,13 @@ MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};
 
 //MaxRankTreeMethods
 Tree* MaxRankTree::clone() const {
-    return new MaxRankTree(*this);
+    Tree *tree = new MaxRankTree(this->node);
+    for(int i=0; i<tree->getChildren().size(); i++)
+    {
+        tree->getChildren().push_back(this->children[i]);
+    }
+
+    return tree;
 }
 
 int MaxRankTree::traceTree() {
@@ -151,7 +157,13 @@ RootTree::RootTree(int rootLabel):Tree(rootLabel) {}
 
 //RootTreeMethods
 Tree* RootTree::clone() const {
-    return new RootTree(*this);
+    Tree *tree = new MaxRankTree(this->node);
+    for(int i=0; i<tree->getChildren().size(); i++)
+    {
+        tree->getChildren().push_back(this->children[i]);
+    }
+
+    return tree;
 }
 
 int RootTree::traceTree() {
