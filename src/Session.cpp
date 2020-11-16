@@ -56,18 +56,18 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 };
 
 void Session::simulate() {
-    int HowManyInAgents=agents.size();
+    int HowManyInAgents=-1;
+
     while(HowManyInAgents!=0)
     {
-       // int i=agents.size()-HowManyInAgents;
-        for(int i=0; i<HowManyInAgents; i++)
+        HowManyInAgents= agents.size();
+
+        for(int i=0; i<agents.size(); i++)
         {
             agents[i]->act(*this);
         }
         HowManyInAgents=agents.size()-HowManyInAgents;
     }
-
-
 
 
 }

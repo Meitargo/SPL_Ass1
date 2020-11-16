@@ -24,14 +24,6 @@ void ContactTracer::act(Session &session) {
        int node = session.getGraph().BFS(session,tree)->traceTree();//built bfs tree from source and do tracetree on thr bfs
        session.removeEdges(session.getGraph(),node);
 
-
-
-       ContactTracer *cT = new ContactTracer();
-       session.addAgent(*cT);
-
-
-
-
     }
 }
 
