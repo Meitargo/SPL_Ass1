@@ -6,7 +6,12 @@
 #include <queue>
 #include "Graph.h"
 #include "Tree.h"
-#include <list>
+#include <iostream>
+#include <fstream>
+#include "json.hpp"
+#include "Agent.h"
+
+
 
 using namespace std;
 class Agent;

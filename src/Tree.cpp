@@ -5,7 +5,7 @@
 # include "Tree.h"
 //# include "Session.h"
 #include "Graph.h"
-#include "queue"
+
 
 
 Tree::Tree(int rootLabel): node(rootLabel), children(){};
