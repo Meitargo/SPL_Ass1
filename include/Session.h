@@ -50,7 +50,7 @@ public:
   //  vector<int> getStatus() ;
   //  void setStatus(int node,int stat);
 
-    static int getCurrIteration() const;
+    static int getCurrIteration() ;
 
 
 private:

@@ -8,7 +8,7 @@
 
 
 
-Tree::Tree(int rootLabel): node(rootLabel), children(){};
+Tree::Tree(int rootLabel): node(rootLabel), children({}){};
 
 
 void Tree::clear() {

@@ -3,11 +3,11 @@
 
 //#include <queue>
 #include <vector>
-#include "Tree.h"
-//#include "Session.h"
+//#include "Tree.h"
+#include "Session.h"
 //#include "iostream"
 
-
+class Session;
 class Graph{
 public:
     Graph(std::vector<std::vector<int>> matrix);
@@ -16,11 +16,11 @@ public:
     bool isInfected(int nodeInd);
 
     //methods we add
-    Tree* BFS (Session session,Tree *source);
+    Tree* BFS (Session session,Tree* source);
     std::vector<std::vector<int>> getEdges();
 
     //////////////////////////////////////////////////////17/11
-    vector<int> getStatus() ;
+    std::vector<int> getStatus() ;
     void setStatus(int node,int stat);
 
 
