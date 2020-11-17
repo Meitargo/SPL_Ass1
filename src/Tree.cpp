@@ -59,7 +59,7 @@ void Tree::addChild(const Tree &child) {
 Tree * Tree::createTree(const Session &session, int rootLabel) {
     Tree* newTree;
       if(session.getTreeType() == Cycle)
-           newTree = new CycleTree(rootLabel,1); //change currCycle
+           newTree = new CycleTree(rootLabel,session.getCurrIteration()); //change currCycle
       else if(session.getTreeType() == MaxRank)
            newTree = new MaxRankTree(rootLabel);
       else if(session.getTreeType() == Root)
@@ -85,6 +85,8 @@ vector<Tree*> Tree::getChildren() {
 //CycleTree constructor
 CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {};
 
+
+
 //CycleTreeMethods
 Tree* CycleTree::clone() const {
     Tree *tree = new CycleTree(this->node,this->currCycle);
@@ -104,31 +106,30 @@ Tree* CycleTree::clone() const {
 
 
 int CycleTree::traceTree() {
-    Tree *tempNode = this;// tree from ct
-    int childrenSize ;
-    vector<Tree> *nodes = new vector<Tree>;
-    nodes->push_back(*tempNode);
-
-    while(Session::getCurrIteration())
-    {
-        tempNode = &nodes->front();
-        childrenSize = tempNode->getChildren().size();
-
-        while(childrenSize+1>0)
-        {
-              tempNode = &nodes->front();
-              nodes->pop();
-              for(int i=0; i<tempNode->getChildren().size();i++)
-              {
-                  //insertChildrenToQueue
-                  nodes->push(*tempNode->getChildren()[i]);
-              }
-              childrenSize--;
+    int i=0;
+    int ans;
+    Tree *Node = this;// tree from ct the whole tree not just a node
+    int currForfor=currCycle;
+    while(currForfor!=0){
+        vector<Tree*> tmp=Node->getChildren();
+        if(!(tmp[i]->getChildren().empty()))
+            Node=tmp[i];
+        else{
+            i=1;
+            if(i<tmp.size()){
+                while(tmp[i]->getChildren().empty())
+                    i=i+1;
+                Node=tmp[i];
+            }
          }
-            currCycle--;
+        ans=tmp[i]->getNode();
+        currForfor--;
     }
-    return nodes->front().getNode();
-}
+    return ans;
+    }
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
