@@ -109,7 +109,7 @@ int CycleTree::traceTree() {
     vector<Tree> *nodes = new vector<Tree>;
     nodes->push_back(*tempNode);
 
-    while()
+    while(Session::getCurrIteration())
     {
         tempNode = &nodes->front();
         childrenSize = tempNode->getChildren().size();

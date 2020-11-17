@@ -12,7 +12,7 @@ using namespace std;
 
 
 
-Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){ //we initialize the edges to be empty
+Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}),status({}){ //we initialize the edges to be empty
     for(int i=0; i<matrix.size(); i++)
     {
         for(int j=0;j<matrix[i].size();j++)
@@ -20,18 +20,22 @@ Graph::Graph(std::vector<std::vector<int>> matrix) :edges({}){ //we initialize t
             edges[i][j] = matrix[i][j];
         }
     }
+
+
+        status.assign(edges.size(),0);
+
 }//now our edges initialize to be the matrix
 
 
 //Graph methods
 bool Graph::isInfected(int nodeInd) {
-        return (Session::getStatus()[nodeInd] == 2);
+        return (getStatus()[nodeInd] == 2);
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////lemameshhhh
 void Graph::infectNode(int nodeInd) {
-
+getStatus()[nodeInd]=2;
 
 }
 
@@ -77,3 +81,10 @@ Tree * Graph::BFS(Session session,Tree *source) {
 return bfsTree;
 }
 
+vector<int> Graph::getStatus()  {
+    return status;
+}
+
+void Graph::setStatus(int node, int newStat) {
+    status[node] = newStat;
+}

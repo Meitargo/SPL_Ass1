@@ -15,7 +15,7 @@ using json = nlohmann::json;
 using namespace std;
 
 // initialize
-Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(), status(),infectedFinal(){
+Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(),infectedFinal(){
     ifstream i(path);
     json j;
     j << i;
@@ -29,11 +29,11 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
     else if(j["tree"]=="R")
         treeType = Root;
 
-    for(int i=0; i<g.getEdges().size(); i++)
+   /* for(int i=0; i<g.getEdges().size(); i++)
     {
         status[i] = 0;
     }
-
+*/
     for(auto& agent:j["agents"])
     {
             Agent *agentTemp;
@@ -43,7 +43,7 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
             else
             {
                 agentTemp = new Virus((int) agent[1]);
-                status[(int)agent[1]] = 1;
+                g.getStatus()[(int)agent[1]] = 1;
             }
 
             agents.push_back(agentTemp);
@@ -69,11 +69,11 @@ void Session::simulate() {
             agents[i]->act(*this);
         }
         HowManyInAgents=agents.size()-HowManyInAgents;
-        currcycle++;
+        currIteration++;
     }
 
-    for(int i=0;i<status.size();i++){
-        if(status[i]==2)
+    for(int i=0;i<g.getStatus().size();i++){
+        if(g.getStatus()[i]==2)
             infectedFinal.push_back(i);
     }
 
@@ -133,6 +133,8 @@ void Session::removeEdges(Graph graph, int nodeToDelete) {
 
 }
 
+
+/*
 vector<int> Session::getStatus()  {
     return status;
 }
@@ -140,10 +142,12 @@ vector<int> Session::getStatus()  {
 void Session::setStatus(int node, int newStat) {
     status[node] = newStat;
 }
+*/
 
-int Session::getCurrIteration() const {
+int Session::getCurrIteration() {
     return currIteration;
 }
+
 
 
 
