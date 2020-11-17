@@ -45,9 +45,9 @@ void Virus::act(Session &session) {
      int indCarrVirus=session.getGraph().BFS(session,tree)->getChildren().front()->getNode();//check about root of bfs
      Virus *carryVirus = new Virus(indCarrVirus);
      session.addAgent(*carryVirus);// add our new carry virus to the agents list
-     session.setStatus(nodeInd, 2);//change the status of nodeind from carry to sick
+     session.getGraph().setStatus(nodeInd, 2);//change the status of nodeind from carry to sick
      session.enqueueInfected(nodeInd);//add the sick node to the infected list-----------------------------/16/11
-     session.setStatus(carryVirus->nodeInd,1);//change the new carry from health to carry
+     session.getGraph().setStatus(carryVirus->nodeInd,1);//change the new carry from health to carry
 }
 
 
