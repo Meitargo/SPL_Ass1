@@ -59,7 +59,7 @@ void Tree::addChild(const Tree &child) {
 Tree * Tree::createTree(const Session &session, int rootLabel) {
     Tree* newTree;
       if(session.getTreeType() == Cycle)
-           newTree = new CycleTree(rootLabel,session.getCurrIteration()); //change currCycle
+           newTree = new CycleTree(rootLabel,session.getCurrIteration());
       else if(session.getTreeType() == MaxRank)
            newTree = new MaxRankTree(rootLabel);
       else if(session.getTreeType() == Root)

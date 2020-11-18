@@ -4,7 +4,7 @@
 //#include "iostream"
 #include "Graph.h"
 //#include <vector>
-//#include "Session.h"
+#include "Session.h"
 //#include <queue>
 //#include "Tree.h"
 
@@ -49,7 +49,7 @@ vector<vector<int>> Graph::getEdges() {
 }
 
 
-Tree* Graph::BFS(Session session,Tree *source) {
+Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> *visited = new vector<bool>;
     queue<Tree> *neighboors = new queue<Tree>;
