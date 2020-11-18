@@ -29,7 +29,7 @@ public:
     virtual int traceTree()=0;
 
     //methods we add
-    virtual Tree* clone() const ;
+    virtual Tree* clone() const=0 ;////////18/11
     int getNode();
     std::vector<Tree*> getChildren();
     void clear();

@@ -18,7 +18,7 @@ using namespace std;
 Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(),infectedFinal(){
     ifstream i(path);
     json j;
-    j << i;
+    i >> j;
     g=Graph(j["graph"]);
 
     //initialize treeType - check

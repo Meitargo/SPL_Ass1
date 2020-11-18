@@ -52,24 +52,31 @@ vector<vector<int>> Graph::getEdges() {
 Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> *visited = new vector<bool>;
-    queue<Tree> *neighboors = new queue<Tree>;
+    queue<Tree*> neighboors; //= new queue<Tree>;
+
+    //vector<Tree> *neigh=new vector<Tree>;
 
     visited->assign(v,false);//initialize every cell in visited to be false
     Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
-    neighboors->push(*source);
+    //neigh->push_back(*source);
+    neighboors.push(source);
 
-    while (!neighboors->empty())
+   // while (!neigh->empty())
+    while (!neighboors.empty())
     {
-        source = &neighboors->front();
-        neighboors->pop();
+        //source= &neigh->front();
+        source = neighboors.front();
+        //neigh->erase(neigh->begin());
+        neighboors.pop();
         for(int i=0 ; i<v; i++)
         {
             if(!(&visited[i]) && edges[source->getNode()][i]==1)
             {
                 visited->at(i) = true;
                 Tree *temp =Tree::createTree(session,i);
-                neighboors->push (*temp);
+                //neigh->push_back(*temp);
+               neighboors.push (temp);
                 bfsTree->addChild(*temp);
 
             }
