@@ -15,10 +15,11 @@ using json = nlohmann::json;
 using namespace std;
 
 // initialize
-Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(),infectedFinal(),currIteration(0){
+Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),agents(),infectedNodes(),infectedFinal(),currIteration(0){
     ifstream i(path);
     json j;
     i >> j;
+
     g=Graph(j["graph"]);
 
     //initialize treeType - check
@@ -62,7 +63,6 @@ void Session::simulate() {
     while(HowManyInAgents!=0)
     {
         HowManyInAgents= agents.size();
-
         for(int i=0; i<agents.size(); i++)
         {
             agents[i]->act(*this);
@@ -118,7 +118,7 @@ const vector<Agent*>& Session::getAgents() const {
     return agents;
 }
 
- Graph Session::getGraph() const {
+ Graph& Session::getGraph() {
     return g;
 }
 

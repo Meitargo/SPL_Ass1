@@ -17,7 +17,7 @@ public:
 
     //methods we add
     Tree* BFS (Session session,Tree* source);
-    std::vector<std::vector<int>> getEdges();
+    std::vector<std::vector<int>>& getEdges();
 
     //////////////////////////////////////////////////////17/11
     std::vector<int> getStatus() ;

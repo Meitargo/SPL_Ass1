@@ -44,7 +44,7 @@ public:
     const int getCurrIteration() const ;
 
     TreeType getTreeType() const; //check if ours
-    Graph getGraph() const;
+    Graph& getGraph();
 
     void removeEdges(Graph graph, int nodeToDelete);
 
