@@ -40,17 +40,16 @@ public:
     //methods we add
     const queue<int> &getInfectedNodes() const;
 
-    const vector<Agent*> getAgents() const;
+    const vector<Agent*> &getAgents() const;
+    const int getCurrIteration() const ;
 
     TreeType getTreeType() const; //check if ours
+    Graph getGraph() const;
 
     void removeEdges(Graph graph, int nodeToDelete);
-    Graph getGraph() const;
 
   //  vector<int> getStatus() ;
   //  void setStatus(int node,int stat);
-
-    static int getCurrIteration() ;
 
 
 private:
@@ -60,7 +59,7 @@ private:
     std::queue<int> infectedNodes;
     //std::vector<int> status;
     vector<int> infectedFinal;
-    static int currIteration;
+    int currIteration;
 };
 
 #endif

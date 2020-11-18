@@ -15,7 +15,7 @@ using json = nlohmann::json;
 using namespace std;
 
 // initialize
-Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(),infectedFinal(){
+Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNodes(),infectedFinal(),currIteration(0){
     ifstream i(path);
     json j;
     i >> j;
@@ -52,7 +52,6 @@ Session::Session(const std::string &path):g({}),treeType(),agents(),infectedNode
 
 
    // infectedNodes = new queue<Tree>;      we should check if the initalize list is enough
-    currIteration=0;
 };
 
 
@@ -115,7 +114,7 @@ const queue<int> &Session::getInfectedNodes() const {
     return infectedNodes;
 }
 
-const vector<Agent*> Session::getAgents() const {
+const vector<Agent*>& Session::getAgents() const {
     return agents;
 }
 
@@ -144,7 +143,7 @@ void Session::setStatus(int node, int newStat) {
 }
 */
 
-int Session::getCurrIteration() {
+const int Session::getCurrIteration() const {
     return currIteration;
 }
 
