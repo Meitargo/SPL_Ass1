@@ -39,49 +39,44 @@ vector<vector<int>>& Graph::getEdges() {
 
 Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
-    vector<bool> *visited = new vector<bool>;
+    vector<bool> visited;
     queue<Tree *> neighboors;
+
     for (int i = 0; i < v; i++) {
-        visited->push_back(false);
+        visited.push_back(false);
     }
 
 
     Tree *bfsTree = Tree::createTree(session, source->getNode());// needs to apply virtual methods in tree
-    visited->at(source->getNode()) = true;
+    visited[source->getNode()] = true;
     neighboors.push(source);
 
-    int counter=0;
-   // while (!neighboors.empty()) {
+    //int counter=0;
+   while (!neighboors.empty()) {
 
 
-        source = neighboors.front();
-        neighboors.pop();
+       source = neighboors.front();
+       neighboors.pop();
 
-           // source=bfsTree->getChildren()[counter];
-            for (int i = 0; i < v; i++) {
+       // source=bfsTree->getChildren()[counter];
+       for (int i = 0; i < v; i++) {
 
-                if (!(visited->at(i)) && edges[source->getNode()][i] == 1) {
+           if (!(visited[i]) && edges[source->getNode()][i] == 1)
+           {
 
-                    visited->at(i) = true;
-                    Tree *temp = Tree::createTree(session, i);
-                    neighboors.push(temp);
-                    source->addChild(*temp);
-                    bfsTree->addChild(*temp);
-     //               counter++;
-                }
+               visited[i] = true;
+               Tree *temp = Tree::createTree(session, i);
+               neighboors.push(temp);
+               source->addChild(*temp);
+               bfsTree->addChild(*temp);
+               //   counter++;
+           }
 
-            }
-            bfsTree
+       }
+       // bfsTree
+      // bfsTree->addChild(*source);
+   }
 
-
-
-
-
-    }
-
-    }
-
-    //   bfsTree->addChild(*source)
 
 
 return bfsTree;

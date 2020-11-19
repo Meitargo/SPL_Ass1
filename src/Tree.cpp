@@ -55,7 +55,7 @@ void Tree::addChild(const Tree &child) {
 
 
 
-}
+
 Tree * Tree::createTree(const Session &session, int rootLabel) {
     Tree* newTree;
       if(session.getTreeType() == Cycle)
@@ -80,7 +80,7 @@ vector<Tree*> Tree::getChildren() {
 }
 
 
-}
+
 //-------------------------------------------------------------endTreeMethods
 
 //CycleTree constructor
