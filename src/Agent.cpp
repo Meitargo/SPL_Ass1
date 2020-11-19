@@ -5,11 +5,11 @@
 #include "Agent.h"
 
 Agent::Agent() {};
-
+ Agent::~Agent() {};
 
 //contact tracer
 ContactTracer::ContactTracer() : Agent() {};
-
+ContactTracer::~ContactTracer() {};
 
 //methods
 void ContactTracer::act(Session &session) {
@@ -31,7 +31,7 @@ Agent *ContactTracer::clone() const {
 //visrus
 
 Virus::Virus(int nodeInd) : Agent(), nodeInd(nodeInd) {};
-
+ Virus::~Virus() {};
 //methods
 void Virus::act(Session &session) {
     Graph &g = session.getGraph();
@@ -42,7 +42,7 @@ void Virus::act(Session &session) {
     int indCarrVirus = -1;
     int size = neigh.size();
     while (indCarrVirus == -1 && i < size) {
-        if (neigh[i] == 1 & g.getStatus()[i] == 0)
+        if ((neigh[i] == 1) & (g.getStatus()[i] == 0))
             indCarrVirus = i;
         i++;
     }

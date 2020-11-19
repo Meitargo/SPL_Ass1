@@ -8,6 +8,7 @@
 class Agent{
 public:
     Agent();
+    virtual ~Agent();
 
     //methods
     virtual void act(Session& session)=0;
@@ -20,6 +21,7 @@ public:
 class ContactTracer: public Agent {
 public:
     ContactTracer();
+    virtual ~ContactTracer();
     //methods
     virtual void act(Session &session);
 
@@ -33,6 +35,7 @@ class Virus: public Agent{
 public:
     //methods
     Virus(int nodeInd);
+    virtual ~Virus();
     virtual void act(Session& session);
 
 
