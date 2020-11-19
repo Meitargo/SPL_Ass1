@@ -53,8 +53,7 @@ void Tree::addChild(const Tree &child) {
 }
 
 
-void Tree::setChild(int index, Tree b) {
-    children[index]=&b;
+
 
 }
 Tree * Tree::createTree(const Session &session, int rootLabel) {

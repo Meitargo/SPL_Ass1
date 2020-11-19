@@ -32,10 +32,11 @@ public:
     int getNode();
     std::vector<Tree*> getChildren();
     void clear();
-    void setChild(int index, Tree b );
+
 protected:
     int node;
     std::vector<Tree*> children;
+
 
 };
 

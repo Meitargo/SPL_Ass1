@@ -51,29 +51,34 @@ Tree* Graph::BFS(Session session,Tree* source) {
     neighboors.push(source);
 
     int counter=0;
-    while (!neighboors.empty()) {
+   // while (!neighboors.empty()) {
+
 
         source = neighboors.front();
         neighboors.pop();
 
-        for (int i = 0; i < v; i++) {
+           // source=bfsTree->getChildren()[counter];
+            for (int i = 0; i < v; i++) {
 
-            if (!(visited->at(i)) && edges[source->getNode()][i] == 1) {
+                if (!(visited->at(i)) && edges[source->getNode()][i] == 1) {
 
-                visited->at(i) = true;
-                Tree *temp = Tree::createTree(session, i);
-                neighboors.push(temp);
-                source->addChild(*temp);
+                    visited->at(i) = true;
+                    Tree *temp = Tree::createTree(session, i);
+                    neighboors.push(temp);
+                    source->addChild(*temp);
+                    bfsTree->addChild(*temp);
+     //               counter++;
+                }
+
             }
-        }
+            bfsTree
 
 
-        for (int k = 0; k < bfsTree->getChildren().size(); k++) {
-            bfsTree->setChild(counter,*source);
 
 
-        }
-        counter++;
+
+    }
+
     }
 
     //   bfsTree->addChild(*source)
