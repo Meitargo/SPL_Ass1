@@ -47,7 +47,6 @@ Tree* Graph::BFS(Session session,Tree* source) {
     }
 
 
-
     Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
     neighboors.push(source);
