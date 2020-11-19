@@ -56,7 +56,7 @@ public:
     TreeType getTreeType() const; //check if ours
     Graph& getGraph();
 
-    void removeEdges(Graph graph, int nodeToDelete);
+    void removeEdges(Graph &graph, int nodeToDelete);
 
 
 

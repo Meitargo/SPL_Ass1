@@ -148,12 +148,13 @@ const vector<Agent*>& Session::getAgents() const {
     return g;
 }
 
-void Session::removeEdges(Graph graph, int nodeToDelete) {
-    vector<std::vector<int>> tempEdges = graph.getEdges();
-   for(int i=0; i<tempEdges.size(); i++)
+void Session::removeEdges(Graph &graph, int nodeToDelete) {
+    //vector<std::vector<int>> tempEdges = graph.getEdges();
+    int size = graph.getEdges().size();
+   for(int i=0; i<size; i++)
    {
-       tempEdges[nodeToDelete][i] = 0;
-       tempEdges[i][nodeToDelete] = 0;
+       graph.getEdges()[nodeToDelete][i] = 0;
+       graph.getEdges()[i][nodeToDelete] = 0;
    }
 
 }

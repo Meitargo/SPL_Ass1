@@ -42,7 +42,12 @@ Tree* Graph::BFS(Session session,Tree* source) {
     vector<bool> *visited = new vector<bool>;
     queue<Tree*> neighboors;
 
-    visited->assign(v,false);//initialize every cell in visited to be false
+    for(int i=0;i<v;i++){
+        visited->push_back(false);
+    }
+
+
+
     Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
     neighboors.push(source);
@@ -62,7 +67,6 @@ Tree* Graph::BFS(Session session,Tree* source) {
                 bfsTree->addChild(*temp);
 
             }
-
         }
     }
 
