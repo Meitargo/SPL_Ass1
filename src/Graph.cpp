@@ -50,6 +50,7 @@ Tree* Graph::BFS(Session session,Tree* source) {
     visited->at(source->getNode()) = true;
     neighboors.push(source);
 
+    int counter=0;
     while (!neighboors.empty()) {
 
         source = neighboors.front();
@@ -68,12 +69,11 @@ Tree* Graph::BFS(Session session,Tree* source) {
 
 
         for (int k = 0; k < bfsTree->getChildren().size(); k++) {
-            for (int i = 0; i < source->getChildren().size(); i++)
-            {
-                bfsTree->getChildren()[k]->addChild(*source->getChildren()[i]);
+            bfsTree->setChild(counter,*source);
 
-            }
+
         }
+        counter++;
     }
 
     //   bfsTree->addChild(*source)

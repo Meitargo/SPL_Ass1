@@ -21,7 +21,6 @@ public:
     const Tree& operator = (Tree && other); //move assignment operator - check const
 
     void addChild(const Tree& child);
-   // const Tree& getChild(int) const; we didnt use it yet
 
 
 
@@ -33,7 +32,7 @@ public:
     int getNode();
     std::vector<Tree*> getChildren();
     void clear();
-
+    void setChild(int index, Tree b );
 protected:
     int node;
     std::vector<Tree*> children;

@@ -4,7 +4,6 @@
 
 # include "Tree.h"
 # include "Session.h"
-#include "Graph.h"
 
 Tree::Tree(int rootLabel): node(rootLabel), children({}){};
 
@@ -53,6 +52,11 @@ void Tree::addChild(const Tree &child) {
      children.push_back(tempChild);
 }
 
+
+void Tree::setChild(int index, Tree b) {
+    children[index]=&b;
+
+}
 Tree * Tree::createTree(const Session &session, int rootLabel) {
     Tree* newTree;
       if(session.getTreeType() == Cycle)
@@ -74,6 +78,9 @@ int Tree::getNode() {
 
 vector<Tree*> Tree::getChildren() {
     return children;
+}
+
+
 }
 //-------------------------------------------------------------endTreeMethods
 
