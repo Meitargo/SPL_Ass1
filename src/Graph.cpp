@@ -66,6 +66,7 @@ Tree* Graph::BFS(Session session,Tree* source) {
             }
         }
 
+
         for (int k = 0; k < bfsTree->getChildren().size(); k++) {
             for (int i = 0; i < source->getChildren().size(); i++)
             {
