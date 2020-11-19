@@ -17,8 +17,7 @@ void ContactTracer::act(Session &session) {
     {
         int source = session.dequeueInfected();
         Tree *tree = Tree::createTree(session, source); // take node from the infected node and create tree
-        int node = session.getGraph().BFS(session,
-                                          tree)->traceTree();//built bfs tree from source and do tracetree on thr bfs
+        int node = session.getGraph().BFS(session,tree)->traceTree();//built bfs tree from source and do tracetree on thr bfs
         session.removeEdges(session.getGraph(), node);
 
     }

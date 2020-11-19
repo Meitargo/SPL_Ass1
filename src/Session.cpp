@@ -49,6 +49,7 @@ Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),ag
 };
 
 //ruleOf5
+/*
 Session::~Session() {
     for(int i=0; i<agents.size();i++)
     {
@@ -59,7 +60,7 @@ Session::~Session() {
 
 }
 
-/*
+
 Session::Session(const Session &other, Graph g) : g(g) {
     //copy constructor
 
