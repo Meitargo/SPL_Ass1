@@ -12,7 +12,8 @@ Tree::Tree(int rootLabel): node(rootLabel), children({}){};
 void Tree::clear() {
     for(auto& children:children)
     {
-        delete children;
+        if(children!=nullptr)
+             delete children;
     }
 }
 //ruleOf5
@@ -35,7 +36,6 @@ const Tree & Tree::operator=(const Tree &other) {
 
 // move constructor
 Tree::Tree(Tree &&other) {
-
     Tree* temp = other.clone();
 }
 
@@ -149,7 +149,7 @@ RootTree::RootTree(int rootLabel):Tree(rootLabel) {}
 
 //RootTreeMethods
 Tree* RootTree::clone() const {
-    Tree *tree = new MaxRankTree(this->node);
+    Tree *tree = new RootTree(this->node);
     for(int i=0; i<tree->getChildren().size(); i++)
     {
         tree->getChildren().push_back(this->children[i]);

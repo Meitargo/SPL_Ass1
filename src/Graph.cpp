@@ -10,13 +10,7 @@ using namespace std;
 
 
 Graph::Graph(std::vector<std::vector<int>> matrix) :edges(matrix),status(vector<int>()){ //we initialize the edges to be empty
-   //for(int i=0; i<matrix.size(); i++)
-   //{
-   //    for(int j=0;j<matrix[i].size();j++)
-   //    {
-   //        edges[i][j] = matrix[i][j];
-   //    }
-   //}
+
 
         if(edges.size()>0)
              status.assign(edges.size(),0);

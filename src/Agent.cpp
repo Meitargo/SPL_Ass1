@@ -39,6 +39,7 @@ void Virus::act(Session &session) {
 
     int i = 0;
     vector<int> &neigh = g.getEdges()[nodeInd];
+
     int indCarrVirus = -1;
     int size = neigh.size();
     while (indCarrVirus == -1 && i < size) {

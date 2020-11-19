@@ -19,15 +19,13 @@ public:
     Tree* BFS (Session session,Tree* source);
     std::vector<std::vector<int>>& getEdges();
 
-    //////////////////////////////////////////////////////17/11
+
     std::vector<int> getStatus() ;
     void setStatus(int node,int stat);
 
 
 private:
     std::vector<std::vector<int>> edges;
-
-///////////////////////////////////////////////////////////17/11
     std::vector<int> status;
 };
 

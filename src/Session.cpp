@@ -2,17 +2,14 @@
 // Created by spl211 on 08/11/2020.
 //
 
-//#include <iostream>
-//#include <fstream>
-//#include "json.hpp"
 #include "Session.h"
-//#include "Agent.h"
-//#include "Tree.h"
-//#include "Graph.h"
+
 
 
 using json = nlohmann::json;
 using namespace std;
+
+
 
 // initialize
 Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),agents(),infectedNodes(),infectedFinal(),currIteration(0){
@@ -30,11 +27,7 @@ Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),ag
     else if(j["tree"]=="R")
         treeType = Root;
 
-   /* for(int i=0; i<g.getEdges().size(); i++)
-    {
-        status[i] = 0;
-    }
-*/
+
     for(auto& agent:j["agents"])
     {
             Agent *agentTemp;
@@ -52,10 +45,43 @@ Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),ag
     }
 
 
-   // infectedNodes = new queue<Tree>;      we should check if the initalize list is enough
+
 };
 
+//ruleOf5
+Session::~Session() {
+    for(int i=0; i<agents.size();i++)
+    {
+        if(agents[i]!=nullptr)
+            delete agents[i];
+    }
+    //distructor
 
+}
+
+/*
+Session::Session(const Session &other, Graph g) : g(g) {
+    //copy constructor
+
+}
+
+const Session & Session::operator=(const Session &other) {
+    //copy assignment constructor
+}
+
+Session::Session(Session &&other, Graph g) : g(g) {
+    //move constructor
+}
+
+const Session & Session::operator=(Session &&other) {
+    //move assignment constructor
+}
+
+Session * Session::clone() const {
+  //  Session *session = new Session(this->g, this->treeType, this->agents, this->infectedNodes, this->infectedFinal, this->currIteration);
+    Session *session = new Session(this->path);
+}
+ */
 
 void Session::simulate() {
     int HowManyInAgents=-1;
@@ -81,7 +107,6 @@ void Session::simulate() {
     j["infected"]=infectedFinal;
     std::ofstream i("./output.json");
     i<<j;
-
 
 }
 //methods

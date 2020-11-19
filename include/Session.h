@@ -27,6 +27,15 @@ enum TreeType{
 
 class Session{
 public:
+
+    //ruleOf5
+    virtual ~Session(); //destructor
+    Session(const Session &other, Graph g); //copy constructor
+    const Session& operator= (const Session & other);//assignment operator - check const
+    Session(Session &&other, Graph g); // move constructor
+    const Session& operator = (Session && other); //move assignment operator - check const
+    Session* clone() const;
+
     Session(const string& path);
     void simulate();
     void addAgent(const Agent& agent);
@@ -34,6 +43,7 @@ public:
 
     void enqueueInfected(int);
     int dequeueInfected();
+
 
 
 
@@ -48,8 +58,6 @@ public:
 
     void removeEdges(Graph graph, int nodeToDelete);
 
-  //  vector<int> getStatus() ;
-  //  void setStatus(int node,int stat);
 
 
 private:
@@ -57,7 +65,6 @@ private:
     TreeType treeType;
     std::vector<Agent*> agents;
     std::queue<int> infectedNodes;
-    //std::vector<int> status;
     vector<int> infectedFinal;
     int currIteration;
 };
