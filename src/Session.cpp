@@ -49,40 +49,61 @@ Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),ag
 };
 
 //ruleOf5
-/*
+
+
 Session::~Session() {
+    //distructor
     for(int i=0; i<agents.size();i++)
     {
         if(agents[i]!=nullptr)
             delete agents[i];
     }
-    //distructor
+
 
 }
 
 
-Session::Session(const Session &other, Graph g) : g(g) {
+Session::Session(const Session &other) : g(other.g),treeType(other.treeType),agents(),infectedNodes(other.infectedNodes),infectedFinal(other.infectedFinal),currIteration(other.currIteration)  {
     //copy constructor
+    for(int i=0 ;i <other.agents.size();i++)
+    {
+        Agent* newAgent =(other.agents[i])->clone();
+        agents.push_back(newAgent);
+    }
 
 }
 
 const Session & Session::operator=(const Session &other) {
     //copy assignment constructor
+    for(int i=0 ;i <other.agents.size();i++)
+    {
+        Agent* newAgent =(other.agents[i])->clone();
+        agents.push_back(newAgent);
+    }
+    return *this;
+
 }
 
-Session::Session(Session &&other, Graph g) : g(g) {
+Session::Session(Session &&other) :g(other.g),treeType(other.treeType),agents(),infectedNodes(other.infectedNodes),infectedFinal(other.infectedFinal),currIteration(other.currIteration) {
     //move constructor
+    for(int i=0 ;i <other.agents.size();i++)
+    {
+        Agent* newAgent =(other.agents[i])->clone();
+        agents.push_back(newAgent);
+    }
 }
 
 const Session & Session::operator=(Session &&other) {
     //move assignment constructor
+    for(int i=0 ;i <other.agents.size();i++)
+    {
+        Agent* newAgent =(other.agents[i])->clone();
+        agents.push_back(newAgent);
+    }
+    return *this;
 }
 
-Session * Session::clone() const {
-  //  Session *session = new Session(this->g, this->treeType, this->agents, this->infectedNodes, this->infectedFinal, this->currIteration);
-    Session *session = new Session(this->path);
-}
- */
+
 
 void Session::simulate() {
     int HowManyInAgents=-1;

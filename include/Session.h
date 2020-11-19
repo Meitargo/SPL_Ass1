@@ -29,12 +29,12 @@ class Session{
 public:
 
     //ruleOf5
-    /*virtual ~Session(); //destructor
-    Session(const Session &other, Graph g); //copy constructor
+    virtual ~Session(); //destructor
+    Session(const Session &other); //copy constructor
     const Session& operator= (const Session & other);//assignment operator - check const
-    Session(Session &&other, Graph g); // move constructor
+    Session(Session &&other); // move constructor
     const Session& operator = (Session && other); //move assignment operator - check const
-    Session* clone() const;*/
+
 
     Session(const string& path);
     void simulate();
