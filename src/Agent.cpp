@@ -22,7 +22,7 @@ void ContactTracer::act(Session &session) {
 
     }
 }
-
+//Agent::~Agent() {};
 
 Agent *ContactTracer::clone() const {
     return new ContactTracer(*this);

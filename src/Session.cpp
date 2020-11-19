@@ -90,11 +90,13 @@ void Session::simulate() {
     while(HowManyInAgents!=0)
     {
         HowManyInAgents= agents.size();
-        for(int i=0; i<agents.size(); i++)
+        int size = agents.size();
+        for(int i=0; i<size; i++)
         {
             agents[i]->act(*this);
+            size = agents.size();
         }
-        HowManyInAgents=agents.size()-HowManyInAgents;
+        HowManyInAgents=size-HowManyInAgents;
         currIteration++;
     }
 

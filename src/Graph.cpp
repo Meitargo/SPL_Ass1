@@ -40,39 +40,42 @@ vector<vector<int>>& Graph::getEdges() {
 Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> *visited = new vector<bool>;
-    queue<Tree*> neighboors;
-    for(int i=0;i<v;i++){
+    queue<Tree *> neighboors;
+    for (int i = 0; i < v; i++) {
         visited->push_back(false);
     }
 
 
-    Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
+    Tree *bfsTree = Tree::createTree(session, source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
     neighboors.push(source);
 
-    while (!neighboors.empty())
-    {
+    while (!neighboors.empty()) {
 
         source = neighboors.front();
         neighboors.pop();
-        for(int i=0 ; i<v; i++)
-        {
 
-            if(!(visited->at(i)) && edges[source->getNode()][i]==1)
-            {
+        for (int i = 0; i < v; i++) {
+
+            if (!(visited->at(i)) && edges[source->getNode()][i] == 1) {
+
                 visited->at(i) = true;
-                Tree *temp =Tree::createTree(session,i);
-                neighboors.push (temp);
+                Tree *temp = Tree::createTree(session, i);
+                neighboors.push(temp);
                 source->addChild(*temp);
             }
         }
 
-        for(int i=0; i <source->getChildren().size(); i++)
-        {
-            bfsTree->getChildren().push_back(source->getChildren()[i]);
-        }
+        for (int k = 0; k < bfsTree->getChildren().size(); k++) {
+            for (int i = 0; i < source->getChildren().size(); i++)
+            {
+                bfsTree->getChildren()[k]->addChild(*source->getChildren()[i]);
 
+            }
+        }
     }
+
+    //   bfsTree->addChild(*source)
 
 
 return bfsTree;
