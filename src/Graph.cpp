@@ -1,12 +1,9 @@
 //
 // Created by spl211 on 08/11/2020.
 //
-//#include "iostream"
+
 #include "Graph.h"
-//#include <vector>
 #include "Session.h"
-//#include <queue>
-//#include "Tree.h"
 
 using namespace std;
 
@@ -33,14 +30,11 @@ bool Graph::isInfected(int nodeInd) {
 
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////lemameshhhh
+
 void Graph::infectNode(int nodeInd) {
 getStatus()[nodeInd]=2;
 
 }
-
-
-
 
 
 //methods we add
@@ -52,22 +46,17 @@ vector<vector<int>>& Graph::getEdges() {
 Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> *visited = new vector<bool>;
-    queue<Tree*> neighboors; //= new queue<Tree>;
-
-    //vector<Tree> *neigh=new vector<Tree>;
+    queue<Tree*> neighboors;
 
     visited->assign(v,false);//initialize every cell in visited to be false
     Tree *bfsTree =Tree::createTree(session,source->getNode());// needs to apply virtual methods in tree
     visited->at(source->getNode()) = true;
-    //neigh->push_back(*source);
     neighboors.push(source);
 
-   // while (!neigh->empty())
     while (!neighboors.empty())
     {
-        //source= &neigh->front();
+
         source = neighboors.front();
-        //neigh->erase(neigh->begin());
         neighboors.pop();
         for(int i=0 ; i<v; i++)
         {
@@ -75,8 +64,7 @@ Tree* Graph::BFS(Session session,Tree* source) {
             {
                 visited->at(i) = true;
                 Tree *temp =Tree::createTree(session,i);
-                //neigh->push_back(*temp);
-               neighboors.push (temp);
+                neighboors.push (temp);
                 bfsTree->addChild(*temp);
 
             }

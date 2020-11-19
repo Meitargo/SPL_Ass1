@@ -6,8 +6,6 @@
 # include "Session.h"
 #include "Graph.h"
 
-
-
 Tree::Tree(int rootLabel): node(rootLabel), children({}){};
 
 
@@ -47,7 +45,6 @@ const Tree & Tree::operator=(Tree &&other) {
     return *this;
 }
 
-
 //--------------------------------------------------------------end ruleOf5
 //Methods-Tree
 
@@ -80,11 +77,8 @@ vector<Tree*> Tree::getChildren() {
 }
 //-------------------------------------------------------------endTreeMethods
 
-
-
 //CycleTree constructor
 CycleTree::CycleTree(int rootLabel, int currCycle):Tree(rootLabel), currCycle(currCycle) {};
-
 
 
 //CycleTreeMethods
@@ -97,12 +91,6 @@ Tree* CycleTree::clone() const {
 
     return tree;
 }
-////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 int CycleTree::traceTree() {
@@ -128,10 +116,6 @@ int CycleTree::traceTree() {
     return ans;
     }
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
 
 //MaxRankTree constructor
 MaxRankTree::MaxRankTree(int rootLabel):Tree(rootLabel) {};
