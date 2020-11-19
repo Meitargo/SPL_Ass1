@@ -41,7 +41,6 @@ Tree* Graph::BFS(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> *visited = new vector<bool>;
     queue<Tree*> neighboors;
-
     for(int i=0;i<v;i++){
         visited->push_back(false);
     }
@@ -58,15 +57,21 @@ Tree* Graph::BFS(Session session,Tree* source) {
         neighboors.pop();
         for(int i=0 ; i<v; i++)
         {
-            if(!(&visited[i]) && edges[source->getNode()][i]==1)
+
+            if(!(visited->at(i)) && edges[source->getNode()][i]==1)
             {
                 visited->at(i) = true;
                 Tree *temp =Tree::createTree(session,i);
                 neighboors.push (temp);
-                bfsTree->addChild(*temp);
-
+                source->addChild(*temp);
             }
         }
+
+        for(int i=0; i <source->getChildren().size(); i++)
+        {
+            bfsTree->getChildren().push_back(source->getChildren()[i]);
+        }
+
     }
 
 
