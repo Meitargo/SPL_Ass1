@@ -1,41 +1,18 @@
 //
-// Created by spl211 on 08/11/2020.
+// Created by spl211 on 20/11/2020.
 //
 
-#include "Graph.h"
-#include "Session.h"
-
-using namespace std;
+#ifndef ASS1_BFS_H
+#define ASS1_BFS_H
 
 
+class bfs {
 
-Graph::Graph(std::vector<std::vector<int>> matrix) :edges(matrix),status(vector<int>()){ //we initialize the edges to be empty
-
-
-        if(edges.size()>0)
-             status.assign(edges.size(),0);
-
-}//now our edges initialize to be the matrix
+};
 
 
-//Graph methods
-bool Graph::isInfected(int nodeInd) {
-        return (getStatus()[nodeInd] == 2);
-
-}
-
-
-void Graph::infectNode(int nodeInd) {
-getStatus()[nodeInd]=2;
-
-}
-
-
-//methods we add
-vector<vector<int>>& Graph::getEdges() {
-    return edges;
-}
-
+#endif //ASS1_BFS_H
+// ha bfs hamekori
 Tree* Graph::Bfs(Session session,Tree* source) {
     int v = edges.size();//number of vertices
     vector<bool> visited;
@@ -103,12 +80,4 @@ Tree* Graph::Bfs(Session session,Tree* source) {
 
 
     return bfsTree;
-}
-
-vector<int> Graph::getStatus()  {
-    return status;
-}
-
-void Graph::setStatus(int node, int newStat) {
-    status[node] = newStat;
 }
