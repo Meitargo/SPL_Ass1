@@ -47,10 +47,10 @@ void Virus::act(Session &session) {
     int i = 0;
     vector<int> &neigh = g.getEdges()[nodeInd];
 
-    for(int k=0;k<stat.size();k++){//check ittttttttttttttttttt
-        if(stat[i]==1)
-            g.setStatus(i,2);
-    }
+    //for(int k=0;k<stat.size();k++){//check ittttttttttttttttttt
+    //    if(stat[i]==1)
+    //        g.setStatus(i,2);
+    //}
 
 
 
@@ -66,9 +66,11 @@ void Virus::act(Session &session) {
     if (indCarrVirus != -1) {
         Virus *carryVirus = new Virus(indCarrVirus);
         session.addAgent(*carryVirus);// add our new carry virus to the agents list
-        g.setStatus(nodeInd,2);//change the status of nodeind from carry to sick
-        session.enqueueInfected(nodeInd);//add the sick node to the infected list-----------------------------/16/11
         g.setStatus(carryVirus->nodeInd, 1);//change the new carry from health to carry
+    }
+    if(!g.getStatus()[nodeInd]==2) {
+        g.setStatus(nodeInd, 2);//change the status of nodeind from carry to sick
+        session.enqueueInfected(nodeInd);//add the sick node to the infected list-----------------------------/16/11
     }
 }
 
