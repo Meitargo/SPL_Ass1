@@ -106,12 +106,14 @@ Tree* CycleTree::clone() const {
 int CycleTree::traceTree() {
     int i=0;
     int ans;
-    Tree *Node = this;// tree from ct the whole tree not just a node
+    Tree *Node = this;// tree from ct the whole tree not just a node??
     int currForfor=currCycle;
-    while(currForfor!=0){
+   // if(currForfor==0)
+       // ans=Node->getNode();
+    while(currForfor>0){//>0?
         vector<Tree*> tmp=Node->getChildren();
         if(!(tmp[i]->getChildren().empty()))
-            Node=tmp[i];
+            Node=tmp[i]->getChildren()[i];
         else{
             i=1;
             if(i<tmp.size()){
@@ -120,7 +122,7 @@ int CycleTree::traceTree() {
                 Node=tmp[i];
             }
          }
-        ans=tmp[i]->getNode();
+        ans=Node->getNode();
         currForfor--;
     }
     return ans;
