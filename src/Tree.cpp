@@ -147,8 +147,8 @@ int MaxRankTree::traceTree() {
     for (int i = 0; i < children.size(); i++) {
         if(children[i]->getChildren().size() > sizeChild)
         {
-            sizeChild = children[i]->getNode();
-            maxChild=i;
+            sizeChild = children[i]->getChildren().size();
+            maxChild=children[i]->getNode();
         }
     }
     return maxChild;

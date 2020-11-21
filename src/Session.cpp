@@ -37,13 +37,13 @@ Session::Session(const std::string &path):g(vector<vector<int>>()),treeType(),ag
             else
             {
                 agentTemp = new Virus((int) agent[1]);
-                g.getStatus()[(int)agent[1]] = 1;
+                g.setStatus((int)agent[1],1);
             }
 
             agents.push_back(agentTemp);
 
     }
-
+infectedFinal={};
 
 
 };
