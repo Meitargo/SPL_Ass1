@@ -143,7 +143,7 @@ Tree* MaxRankTree::clone() const {
 
 int MaxRankTree::traceTree() {
     int sizeChild=0;
-    int maxChild=0;
+    int maxChild=-1;
     for (int i = 0; i < children.size(); i++) {
         if(children[i]->getChildren().size() > sizeChild)
         {
