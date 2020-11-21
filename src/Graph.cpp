@@ -35,75 +35,35 @@ getStatus()[nodeInd]=2;
 vector<vector<int>>& Graph::getEdges() {
     return edges;
 }
+Tree * Graph::BFS(Session session, Tree *bfstree,queue<int> q,vector<bool> &discoverd) {
+    if(q.empty())
+        return bfstree;
+    int v=q.front();
+    q.pop();
 
-Tree* Graph::Bfs(Session session,Tree* source) {
-    int v = edges.size();//number of vertices
-    vector<bool> visited;
-    queue<Tree *> neighboors;
+    Tree *tmp=Tree::createTree(session,v);
+    queue<int> childrenOf;
+    for(int u=0;u<edges[v].size();u++){
+        if(edges[v][u]==1 && !(discoverd[u])){
+            discoverd[u]=true;
+            q.push(u);
+            childrenOf.push(u);
+            tmp->addChild(*Tree::createTree(session,u));
 
-    for (int i = 0; i < v; i++) {
-        visited.push_back(false);
+
+        }
+    }
+    for(int k=0;k<tmp->getChildren().size();k++) {
+
+    bfstree->addRealChid(BFS(session,tmp->getChildren()[k],childrenOf,discoverd));
+        childrenOf.pop();
     }
 
-    Tree *bfsTree ;//= Tree::createTree(session, source->getNode());// needs to apply virtual methods in tree
-    visited[source->getNode()] = true;
-    neighboors.push(source);
+    //bfstree->addChild(*BFS(session,tmp,q,discoverd));
 
+return bfstree;
 
-    int counter = 0;
-    while (!neighboors.empty()) {
-
-        if (counter == 0) {
-            source = neighboors.front();
-            neighboors.pop();
-
-            for (int i = 0; i < v; i++) {
-
-                if (!(visited[i]) && edges[source->getNode()][i] == 1) {
-
-                    visited[i] = true;
-                    Tree *temp = Tree::createTree(session, i);
-                    neighboors.push(temp);
-                    source->addChild(*temp);
-
-                }
-
-            }
-            bfsTree=source;
-        }
-        else {
-            for (int k = 0; k < bfsTree->getChildren().size(); k++) {
-                source = neighboors.front();
-                neighboors.pop();
-
-                for (int i = 0; i < v; i++) {
-
-                    if (!(visited[i]) && edges[source->getNode()][i] == 1) {
-
-                        visited[i] = true;
-                        Tree *temp = Tree::createTree(session, i);
-                        neighboors.push(temp);
-                        source->addChild(*temp);
-
-
-                    }
-
-                }
-
-
-                for (int m = 0; m < source->getChildren().size(); m++)
-                    bfsTree->getChildren()[k]->addChild(*source->getChildren()[m]);
-            }
-        }
-
-        counter++;
-    }
-
-
-
-
-    return bfsTree;
-}
+};
 
 vector<int> Graph::getStatus()  {
     return status;

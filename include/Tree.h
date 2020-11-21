@@ -32,6 +32,7 @@ public:
     int getNode();
     std::vector<Tree*> getChildren();
     void clear();
+    void addRealChid(Tree* child);
 
 protected:
     int node;

@@ -16,7 +16,7 @@ public:
     bool isInfected(int nodeInd);
 
     //methods we add
-    Tree* BFS (Session session,Tree* source);
+    Tree* BFS (Session session,Tree* source,queue<int> q,vector<bool> &discoverd);
     std::vector<std::vector<int>>& getEdges();
 
 

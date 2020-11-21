@@ -52,6 +52,10 @@ void Tree::addChild(const Tree &child) {
      children.push_back(tempChild);
 }
 
+void Tree::addRealChid(Tree* child) {
+    children.push_back(child);
+}
+
 
 
 
